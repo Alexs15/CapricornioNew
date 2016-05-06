@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="612" pageHeight="792" columnWidth="582" leftMargin="0" rightMargin="30" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cod" class="java.math.BigDecimal"/>
+	<queryString>
+		<![CDATA[select t1.NOMBRE, t1.NOMBRE_COMERCIAL, t1.CUMPLE, t1.PLAZO, t1.OBSERVACION, t1.MONTO, t1.COD_PROVEEDOR as nit, ROWNUM as num
+from PROPONENTES t1
+where t1.COD_TRANSACCION=$P{cod}]]>
+	</queryString>
+	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="NOMBRE_COMERCIAL" class="java.lang.String"/>
+	<field name="CUMPLE" class="java.lang.String"/>
+	<field name="PLAZO" class="java.lang.String"/>
+	<field name="OBSERVACION" class="java.lang.String"/>
+	<field name="MONTO" class="java.lang.String"/>
+	<field name="NIT" class="java.lang.String"/>
+	<field name="NUM" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement x="2" y="41" width="62" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="64" y="41" width="122" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="186" y="41" width="166" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="352" y="41" width="71" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="423" y="41" width="100" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="41" width="62" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="41" width="122" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="186" y="41" width="166" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NOMBRE_COMERCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="41" width="71" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="41" width="98" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CUMPLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="21" width="311" height="20"/>
+				<textElement/>
+				<text><![CDATA[EVALUACION DE DOCUMENTOS LEGALES ADMINISTRATIVOS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<rectangle>
+				<reportElement x="2" y="0" width="62" height="39"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="64" y="0" width="122" height="39"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="186" y="0" width="166" height="39"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="352" y="0" width="71" height="39"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="423" y="1" width="100" height="39"/>
+			</rectangle>
+			<textField>
+				<reportElement x="2" y="0" width="62" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{NUM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="0" width="122" height="39"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="186" y="0" width="166" height="39"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMBRE_COMERCIAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="0" width="71" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="1" width="98" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CUMPLE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

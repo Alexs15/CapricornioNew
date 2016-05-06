@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="modelocontrato2" language="groovy" pageWidth="612" pageHeight="1008" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.2396694214876034"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="domicilio_proponente_adjudicado" class="java.lang.String"/>
+	<parameter name="obj_ctr" class="java.lang.String"/>
+	<parameter name="bien" class="java.lang.String"/>
+	<parameter name="tipo_contrato" class="java.lang.String"/>
+	<parameter name="loc_ent_trib" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<parameter name="cuce_proc" class="java.lang.String"/>
+	<parameter name="ev_cc" class="java.lang.String"/>
+	<parameter name="desc_bienes" class="java.lang.String"/>
+	<parameter name="ob_entidad" class="java.lang.String"/>
+	<parameter name="tipo_garantia" class="java.lang.String"/>
+	<parameter name="rs_entidad" class="java.lang.String"/>
+	<parameter name="mnt_contrato" class="java.lang.String"/>
+	<parameter name="num_pln" class="java.lang.String"/>
+	<parameter name="plazo_efecto" class="java.lang.String"/>
+	<parameter name="opcion_1" class="java.lang.String"/>
+	<parameter name="opcion_2" class="java.lang.String"/>
+	<parameter name="lugar_entrega_bien" class="java.lang.String"/>
+	<parameter name="responsable_recepcion" class="java.lang.String"/>
+	<parameter name="plazo_garantia" class="java.lang.String"/>
+	<parameter name="monto_multa" class="java.lang.String"/>
+	<parameter name="monto_garantia" class="java.lang.String"/>
+	<parameter name="funcionario_firma" class="java.lang.String"/>
+	<parameter name="proveedor" class="java.lang.String"/>
+	<parameter name="fecha_registro_contrato" class="java.lang.String"/>
+	<parameter name="descripcion_tipo_contrato" class="java.lang.String"/>
+	<parameter name="ci_proponente_adjudicado" class="java.lang.String"/>
+	<parameter name="denominacion_proponente_adjudicado" class="java.lang.String"/>
+	<parameter name="modalidad_contratacion" class="java.lang.String"/>
+	<parameter name="objeto_contratacion" class="java.lang.String"/>
+	<parameter name="tipo_proceso_contratacion" class="java.lang.String"/>
+	<parameter name="denominacion_contratacion" class="java.lang.String"/>
+	<parameter name="cod_transaccion" class="java.lang.Number"/>
+	<queryString>
+		<![CDATA[select t3.proponente_adjudicado,t3.dir_proponente_adjudicado
+,t2.detalle,t2.cod_almacen,t2.cod_cuantia,t2.cod_w,t3.razon_social_contratante,t3.nit_contratante
+,t3.direccion_contratante,t3.ciudad_contratante,t3.rep_leg_contratante,t3.cargo_rep_leg_contratante
+,t3.ci_rep_leg_contratante,t3.desc_tipo_contrato,t3.ci_proponente_adjudicado,t3.deno_proponente_adjudicado
+,t3.asesor_juridico,t3.objeto_contratacion,t3.modalidad_contratacion,t3.denominacion_contratacion
+from transaccion t2 inner join contratos t3 on t2.cod_transaccion=t3.cod_transaccion
+where t2.cod_transaccion=2913]]>
+	</queryString>
+	<field name="PROPONENTE_ADJUDICADO" class="java.lang.String"/>
+	<field name="DIR_PROPONENTE_ADJUDICADO" class="java.lang.String"/>
+	<field name="DETALLE" class="java.lang.String"/>
+	<field name="COD_ALMACEN" class="java.math.BigDecimal"/>
+	<field name="COD_CUANTIA" class="java.math.BigDecimal"/>
+	<field name="COD_W" class="java.math.BigDecimal"/>
+	<field name="RAZON_SOCIAL_CONTRATANTE" class="java.lang.String"/>
+	<field name="NIT_CONTRATANTE" class="java.lang.String"/>
+	<field name="DIRECCION_CONTRATANTE" class="java.lang.String"/>
+	<field name="CIUDAD_CONTRATANTE" class="java.lang.String"/>
+	<field name="REP_LEG_CONTRATANTE" class="java.lang.String"/>
+	<field name="CARGO_REP_LEG_CONTRATANTE" class="java.lang.String"/>
+	<field name="CI_REP_LEG_CONTRATANTE" class="java.lang.String"/>
+	<field name="DESC_TIPO_CONTRATO" class="java.lang.String"/>
+	<field name="CI_PROPONENTE_ADJUDICADO" class="java.lang.String"/>
+	<field name="DENO_PROPONENTE_ADJUDICADO" class="java.lang.String"/>
+	<field name="ASESOR_JURIDICO" class="java.lang.String"/>
+	<field name="OBJETO_CONTRATACION" class="java.lang.String"/>
+	<field name="MODALIDAD_CONTRATACION" class="java.lang.String"/>
+	<field name="DENOMINACION_CONTRATACION" class="java.lang.String"/>
+	<group name="primera_parte">
+		<groupHeader>
+			<band height="904">
+				<textField>
+					<reportElement x="0" y="0" width="572" height="144"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana" size="10"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Conste por el presente Contrato Administrativo de "+$F{DESC_TIPO_CONTRATO}+", que celebran por una parte la <b>"+$F{RAZON_SOCIAL_CONTRATANTE}+"</b>, con NIT Nº "+$F{NIT_CONTRATANTE}+", con domicilio en "+$F{DIRECCION_CONTRATANTE}+", en la ciudad de "+$F{CIUDAD_CONTRATANTE}+", representado legalmente por el/la <b>"+$F{REP_LEG_CONTRATANTE}+"</b>, "+$F{CARGO_REP_LEG_CONTRATANTE}+", con Cedula de identidad Nº "+$F{CI_REP_LEG_CONTRATANTE}+", que en adelante se denominará la <b>ENTIDAD</b>; y, por otra parte <b>"+$F{PROPONENTE_ADJUDICADO}+"</b>, con cédula de identidad No. <b>"+$F{CI_PROPONENTE_ADJUDICADO}+"</b> , con domicilio en "+$F{DIR_PROPONENTE_ADJUDICADO}+" ,que en adelante se denominará el <b>"+$F{DENO_PROPONENTE_ADJUDICADO}+"</b>, quienes celebran y suscriben el presente Contrato Administrativo, de  acuerdo a los siguientes términos y condiciones:"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="-1" y="144" width="572" height="20"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA PRIMERA.- (ANTECEDENTES)]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="-1" y="164" width="572" height="84"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana" size="10"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["La <b>ENTIDAD</b>, en proceso realizado bajo las normas y regulaciones de contratación establecidas en el Decreto Supremo N° 0181,  de 28 de junio de 2009, de las Normas Básicas del Sistema de Administración de Bienes y Servicios (NB-SABS), "+$P{descripcion_tipo_contrato}+", dentro de la Modalidad de "+$F{MODALIDAD_CONTRATACION}+", convocó en fecha ___________  a personas naturales con capacidad de contratar con el Estado, para la contratación de <b>"+$F{OBJETO_CONTRATACION}+"</b>."]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="1" y="248" width="572" height="82"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Concluida la etapa de evaluación de propuestas, el Responsable del Proceso de Contratación "+$P{tipo_proceso_contratacion}+", en base a la Recomendación emitido por _______________, resolvió adjudicar la contratación de "+$P{descripcion_tipo_contrato}+" a "+$F{PROPONENTE_ADJUDICADO}+", al cumplir su propuesta con todos los requisitos solicitados."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="330" width="572" height="20"/>
+					<textElement>
+						<font fontName="Verdana" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA SEGUNDA.- (LEGISLACIÓN APLICABLE)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="41" y="390" width="530" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[b) Ley Nº 1178, de 20 de julio de 1990, de Administración y Control Gubernamentales.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="41" y="410" width="531" height="26"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[c) Decreto Supremo Nº 0181, de 28 de junio de 2009, de las Normas Básicas del Sistema de Administración de Bienes y Servicios – NB-SABS y sus modificaciones.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="41" y="436" width="532" height="17"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[d) Ley del Presupuesto General del Estado aprobado para la gestión y su reglamentación.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="41" y="453" width="531" height="26"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[e) Otras disposiciones relacionadas.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="350" width="571" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[El presente Contrato se celebra exclusivamente al amparo de las siguientes disposiciones:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="479" width="572" height="18"/>
+					<textElement>
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA TERCERA.- (OBJETO Y CAUSA)]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="1" y="497" width="572" height="74"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["El objeto del presente contrato es de "+$F{OBJETO_CONTRATACION}+" que en adelante se denominara <b>"+$F{DENOMINACION_CONTRATACION}+"</b>, para (establecer la causa de la contratación), provistos por el <b>"+$F{DENO_PROPONENTE_ADJUDICADO}+"</b> de conformidad con la Propuesta Adjudicada, con estricta y absoluta sujeción al presente Contrato. <b>(AQUÍ PUEDE VENIR ALGUN OTRO DETALLE)</b>"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="40" y="370" width="531" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[a) Constitución Política del Estado]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="571" width="572" height="20"/>
+					<textElement>
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA CUARTA.- (DOCUMENTOS INTEGRANTES DEL CONTRATO)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="591" width="571" height="26"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Forman parte del presente contrato, los siguientes documentos:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="34" y="617" width="537" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[a) Documento Base de Contratación]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="34" y="637" width="538" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[b) Propuesta Adjudicada.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="34" y="657" width="538" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[c) Documento de Adjudicación.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="34" y="677" width="537" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[d) Garantía de Cumplimiento de contrato, cuando corresponda <b>(suprimir esto en pagos parciales)</b>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="34" y="697" width="537" height="30"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[e) Garantía de Correcta de Inversión de Anticipo, cuando corresponda <b>(suprimir esto en pagos parciales)</b>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="34" y="727" width="538" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[f) Certificado del RUPE.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="34" y="747" width="539" height="16"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[g) Poder General del Representante Legal <b>(si corresponde)</b> y Fotocopia de Carnet de Identidad.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="33" y="763" width="540" height="28"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[h) Otros Documentos específicos de acuerdo al objeto de la contratación. <b>(La ENTIDAD,  detallará, cuando corresponda, los documentos específicos necesarios para el contrato).</b>
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="803" width="572" height="20"/>
+					<textElement>
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA QUINTA.- (OBLIGACIONES DE LAS PARTES)]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="823" width="570" height="50"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Las partes contratantes se comprometen y obligan a dar cumplimiento a todas y cada una de las cláusulas del presente contrato.Por su parte, el <b>"+$P{denominacion_proponente_adjudicado}+"</b> se compromete a cumplir con las siguientes obligaciones:"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="33" y="873" width="539" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>1.</b> Realizar la prestación de <b>"+$P{denominacion_contratacion}+"</b> objeto del presente contrato, de acuerdo con lo establecido en el DBC, así como las condiciones de su propuesta."]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="segunda_parte">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="904">
+				<staticText>
+					<reportElement x="0" y="515" width="571" height="20"/>
+					<textElement textAlignment="Justified" verticalAlignment="Bottom">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA  SEPTIMA.- (GARANTÍA DE CUMPLIMIENTO DE CONTRATO)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="459" width="572" height="28"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[El contrato, entrará en vigencia desde el día siguiente hábil de su suscripción, por ambas partes, hasta que las mismas hayan dado cumplimiento a todas las cláusulas contenidas en el presente Contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="535" width="572" height="67"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[A la suscripción del contrato, el CONSULTOR, garantiza el fiel cumplimiento del presente Contrato en todas sus partes con ______________ (Señalar el tipo de garantía presentada, Boleta de Garantía, Garantía a Primer Requerimiento o Póliza de Seguro de Caución a Primer Requerimiento) a la orden de la Universidad Mayor de San Andrés, por el siete por ciento (7%) del monto del contrato que corresponde a __________ (señalar el monto en forma numeral y literal), con vigencia a partir de la firma de contrato, hasta la conclusión del mismo.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="439" width="572" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA SEXTA.- (VIGENCIA)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="31" y="70" width="539" height="21"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>4.</b> Cumplir cada una de las cláusulas del presente contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="30" y="91" width="542" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>5.</b> (Otras obligaciones que la entidad considere pertinente de acuerdo al objeto de contratación.)
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="122" width="572" height="23"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Por su parte, la <b>ENTIDAD</b> se compromete a cumplir con las siguientes obligaciones:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="2" y="145" width="570" height="23"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>(Seleccionar estas obligaciones en caso de Consultores Individuales de Línea)</b>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="29" y="168" width="539" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>1.</b> Apoyar la Consultoría proporcionando la información necesaria, apoyo logístico referente a condiciones de trabajo e insumos.]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="31" y="199" width="539" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>2.</b> Dar conformidad al servicio de <b>"+$P{denominacion_contratacion}+"</b>, en un plazo no mayor de 5 días hábiles computables a partir de la recepción de informe."]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="31" y="230" width="539" height="41"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>3.</b> Realizar el pago de <b>"+$P{denominacion_contratacion}+"</b> en un plazo no mayor de 10 días hábiles computables a partir de la emisión de la conformidad a favor del "+$P{denominacion_proponente_adjudicado}+"."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="28" y="271" width="539" height="21"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>4.</b> Cumplir cada una de las cláusulas del presente contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="292" width="539" height="23"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>(Seleccionar estas obligaciones en caso de Consultores por Producto)</b>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="29" y="367" width="543" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>3.</b> Realizar el pago de la <b>CONSULTORÍA</b> en el o los plazos establecidos en el presente contrato a favor del Consultor.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="27" y="398" width="544" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>4.</b> Cumplir cada una de las cláusulas del presente contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="29" y="336" width="543" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>2.</b> Dar conformidad del producto presentado en un plazo no mayor de 10 días hábiles computables a partir de la recepción de informe.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="29" y="315" width="543" height="21"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>1.</b> Apoyar la Consultoría proporcionando la información necesaria.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="487" width="572" height="28"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>(En caso de Consultoría Individual por Producto seleccionar una de las siguientes cláusulas considerando si se va a requerir Garantía o Retención por pagos parciales).</b>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="670" width="572" height="42"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[El <b>CONSULTOR</b> acepta expresamente, que la <b>ENTIDAD</b> retendrá el siete por cien (7%) de cada pago parcial, en sustitución de la Garantía de Cumplimiento de Contrato. Estas retenciones serán reintegradas en el marco de lo establecido en la Cláusula Decima Novena del presente contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="602" width="572" height="48"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[En caso de que el <b>CONSULTOR</b>, incurriere en algún tipo de incumplimiento contractual, el importe de dicha garantía, será pagado en favor de la <b>ENTIDAD</b>, sin necesidad de ningún trámite o acción judicial, a su solo requerimiento.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="650" width="570" height="20"/>
+					<textElement textAlignment="Justified" verticalAlignment="Bottom">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA  SEPTIMA.- (RETENCIONES POR PAGOS PARCIALES)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="779" width="570" height="20"/>
+					<textElement textAlignment="Justified" verticalAlignment="Bottom">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA  SEPTIMA.- (COMPROMISO POR GARANTÍA)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="712" width="572" height="39"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[En caso de que el <b>CONSULTOR</b>, incurriere en algún tipo de incumplimiento contractual, el importe de dicha garantía será pagado en favor de la <b>ENTIDAD</b>, sin necesidad de ningún trámite o acción judicial, a su solo requerimiento.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="751" width="572" height="28"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(En caso de Consultoría Individual de Línea, considerar la siguiente cláusula y suprimir las dos anteriores cláusulas séptimas)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="799" width="572" height="77"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[A la suscripción del contrato, el <b>CONSULTOR</b> se compromete a su fiel cumplimiento del contrato en todas sus partes. En este sentido el <b>CONSULTOR</b> no está obligado a presentar una Garantía de Cumplimiento de Contrato, ni la Entidad a realizar la retención de los pagos parciales por concepto de Garantía de Cumplimiento de Contrato; sin embargo, en caso de que el <b>CONSULTOR</b>, incurriere en algún tipo de incumplimiento contractual, se tendrá al mismo como impedido de participar en los procesos de contrataciones del Estado, en el marco del artículo 43 del Decreto Supremo Nº 0181.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="876" width="572" height="28"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(En caso de Consultoría Individual de Línea, suprimir el texto de la cláusula y señalar que en la consultoría individual de línea no corresponde solicitar anticipo)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="32" y="31" width="539" height="39"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>3.</b> Actualizar la (s) Garantía (s) (vigencia y/o monto), a requerimiento de la Entidad (suprimir este inciso en caso de que se tengan programados pagos parciales o en caso de que el contrato sea para consultoría individual de línea).]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="32" y="0" width="539" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>2.</b> Mantener vigentes las garantías presentadas (suprimir este inciso en caso de que se tengan programados pagos parciales o en caso de que el contrato sea para consultoría individual de línea).]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="tercera_parte">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="904">
+				<textField>
+					<reportElement x="1" y="33" width="570" height="85"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["La <b>ENTIDAD</b>, podrá otorgar uno o varios anticipos al <b>CONSULTOR</b>, mismos que deberán ser facturados y que por ningún concepto deberán exceder el veinte por ciento (20%) del monto del Contrato, contra entrega de una Garantía de Correcta Inversión de Anticipo por el cien por ciento (100%) del monto a ser desembolsado, la misma que deberá tener una vigencia mínima de noventa (90) días calendario. El importe del anticipo será descontado en _______________ (indicar el número de pagos), pagos hasta cubrir el monto total del  anticipo."]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="118" width="572" height="38"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["El importe de la garantía podrá ser cobrado por la <b>ENTIDAD</b> en caso de que el <b>CONSULTOR</b> no haya iniciado la provisión del servicio dentro de los "+$P{plazo_efecto}+" días establecidos al efecto."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="10" width="569" height="13"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA OCTAVA.- (ANTICIPO)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="-1" y="208" width="572" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA NOVENA.- (PLAZO DE PRESTACIÓN DE LA CONSULTORÍA)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="156" width="572" height="38"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Esta Garantía podrá ser sustituida periódicamente por otra garantía, cuyo valor deberá ser la diferencia entre el monto otorgado y el monto descontado en cada pago. Las Garantías sustitutivas deberán mantener su vigencia en forma continua y hasta la amortización total del anticipo.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="228" width="572" height="28"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(Considerar esta redacción en el caso de que la prestación del servicio sea por un plazo determinado) ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="256" width="572" height="38"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[El plazo para la prestación de la CONSULTORÍA, tendrá una duración de____________ (establecer el plazo en días calendario, numeral y literal), computables a partir _____________ (Seleccionar una de las siguientes opciones):
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="55" y="294" width="517" height="17"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[a) de la emisión del orden de proceder.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="56" y="311" width="516" height="17"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[b) del desembolso del anticipo.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="56" y="328" width="516" height="17"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[c) del día siguiente hábil de la suscripción del contrato]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="355" width="571" height="38"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[En el caso de que la finalización de la CONSULTORÍA, coincida con un día sábado, domingo o feriado, la misma será trasladada al siguiente día hábil administrativo.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="393" width="572" height="28"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(Considerar esta redacción en el caso de que la prestación del servicio sea por Producto con entregas parciales, contemplados en un Cronograma)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="421" width="571" height="38"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[El plazo para la prestación de la CONSULTORIA, se realizará de acuerdo al siguiente cronograma____________ (establecer los plazos, de acuerdo al cronograma establecido en los términos de referencia, en días calendario, numeral y literal), computables a partir _____________ (Seleccionar una de las siguientes opciones):]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="55" y="478" width="517" height="17"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[a) de la emisión del orden de proceder.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="54" y="495" width="517" height="17"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[b) del desembolso del anticipo.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="54" y="512" width="517" height="17"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[c) del día siguiente hábil de la suscripción del contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="529" width="571" height="38"/>
+					<textElement textAlignment="Justified" markup="none">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[En el caso de que la finalización de la CONSULTORÍA, coincida con un día sábado, domingo o feriado, la misma será trasladada al siguiente día hábil administrativo.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="567" width="569" height="15"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA.- (LUGAR DE PRESTACIÓN DE SERVICIOS)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="582" width="571" height="38"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[El <b>CONSULTOR</b> realizará la<b> CONSULTORÍA</b>, objeto del presente contrato en _____________ (señalar el lugar o lugares donde realizará la consultoría).]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="620" width="569" height="14"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA PRIMERA.- (DEL MONTO, MONEDA Y FORMA DE PAGO)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="646" width="571" height="38"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[La ENTIDAD cancelará en favor del CONSULTOR el monto total de__________(Registrar en forma numeral y literal el monto a ser cancelado) , suma que será pagada mensualmente con cargo a ____________”.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="684" width="571" height="63"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Todos los pagos serán realizados previa presentación de informe de actividades parciales e informe final, aprobados por _________(Registrar la Unidad Solicitante de la que dependerá el Consultor)  de la Universidad Mayor de San Andrés, asimismo el CONSULTOR deberá adjuntar el comprobante de pago al Sistema Integral de Pensiones (SIP) para el pago. (En el caso de Consultorías Individuales de Línea la Entidad podrá actuar como agente de retención y pago.)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="760" width="569" height="17"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA SEGUNDA.- (ESTIPULACIÓN SOBRE IMPUESTOS)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="777" width="571" height="29"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Correrá por cuenta del CONSULTOR, en el marco de la relación contractual, el pago de todos los impuestos vigentes en el país a la fecha de suscripción del presente contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="806" width="571" height="42"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[En caso de que posteriormente, el Estado Plurinacional de Bolivia, implantara impuestos adicionales, disminuyera o incrementara los vigentes, mediante disposición legal expresa, el <b>CONSULTOR</b> deberá acogerse a su cumplimiento desde la fecha de vigencia de dicha normativa.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="2" y="848" width="572" height="24"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(Seleccionar esta cláusula para la contratación Consultores Individuales por Producto)]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="cuarta_parte">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="904">
+				<staticText>
+					<reportElement x="0" y="277" width="567" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA QUINTA.- (CESIÓN)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="124" width="567" height="68"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[El contrato podrá ser modificado por uno o varios contratos modificatorios, mismos que pueden afectar el alcance, monto y/o plazo. El monto de cada contrato modificatorio no deberán exceder el diez por ciento (10%) del monto del presente contrato; asimismo, la suma de los montos de los contratos modificatorios no deberán exceder el diez por ciento (10%) del monto del presente contrato, de acuerdo con lo establecido en el Artículo 89 del Decreto Supremo N° 0181.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="297" width="567" height="34"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[El <b>CONSULTOR</b> no podrá transferir parcial ni totalmente las obligaciones contraídas en el presente Contrato, siendo de su entera responsabilidad la ejecución y cumplimiento de las obligaciones establecidas en el mismo.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="-1" y="104" width="567" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA CUARTA.- (MODIFICACIONES AL CONTRATO)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="11" width="567" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA TERCERA.- (FACTURACIÓN)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="363" width="569" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA SEXTA.- (MULTAS)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="439" width="569" height="16"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA SÉPTIMA.- (CONFIDENCIALIDAD)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="546" width="569" height="28"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA OCTAVA.- (EXONERACIÓN A LA ENTIDAD DE RESPONSABILIDADES POR DAÑO A TERCEROS)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="622" width="569" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Se dará por terminado el vínculo contractual por una de las siguientes modalidades:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="609" width="569" height="13"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA NOVENA.- (TERMINACIÓN DEL CONTRATO)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="31" width="571" height="49"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Para que se efectúe el pago, el <b>CONSULTOR</b> deberá emitir la respectiva factura oficial por el anticipo cuando éste exista y por el monto del pago a favor de la <b>ENTIDAD</b>, caso contrario la <b>ENTIDAD</b> deberá retener los montos de obligaciones tributarias pendientes, para su posterior pago al Servicio de Impuestos Nacionales.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="80" width="572" height="24"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(Seleccionar esta cláusula para la contratación Consultores Individuales de Línea)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="192" width="572" height="24"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(Seleccionar esta cláusula para la contratación Consultores Individuales de Línea)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="216" width="567" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA CUARTA.- (MODIFICACIONES AL CONTRATO)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="-1" y="236" width="572" height="41"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[La modificación al contrato podrá realizarse hasta un máximo de dos (2) veces, no debiendo exceder el plazo de cada modificación al establecido en el presente contrato, de acuerdo con lo establecido en el Artículo 89 del Decreto Supremo N° 0181.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="331" width="572" height="32"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(Sólo para contrataciones de Consultores Individuales por Producto incluir la siguiente Cláusula, en caso de consultoría individual de línea suprimir señalar que no aplica multas al presente contrato)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="383" width="571" height="56"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[El CONSULTOR se obliga a cumplir con el cronograma y/o el plazo de entrega establecido en la Cláusula Novena del presente Contrato, caso contrario será multado con el __________  % (La Unidad Solicitante establecerá el porcentaje de acuerdo al objeto del contrato, mismo que no podrá exceder del 1% del monto del contrato) por día de retraso. La suma de las multas no podrá exceder en ningún caso el veinte por ciento (20%) del monto total del contrato sin perjuicio de resolver el mismo.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="455" width="571" height="56"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Los materiales producidos por el <b>CONSULTOR</b>, así como la información a la que este tuviere acceso, durante o después de la ejecución presente contrato, tendrá carácter confidencial, quedando expresamente prohibida su divulgación a terceros, exceptuando los casos en que la Entidad emita un pronunciamiento escrito estableciendo lo contrario.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="511" width="571" height="35"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Así mismo el <b>CONSULTOR</b> reconoce que la <b>ENTIDAD</b> es el único propietario de los productos y documentos producidos en la <b>CONSULTORÍA</b>, producto del presente Contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="574" width="571" height="35"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[El <b>CONSULTOR</b> se obliga a tomar todas las previsiones que pudiesen surgir por daño a terceros, se exonera de estas obligaciones a la <b>ENTIDAD</b>.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="29" y="662" width="537" height="38"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Tanto la <b>ENTIDAD</b> como el <b>CONSULTOR</b> darán por terminado el presente Contrato, una vez que ambas partes hayan dado cumplimiento a todas y cada una de las clausulas contenidas en el mismo, lo cual se hará constar por escrito.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="29" y="642" width="204" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[1. Por Cumplimiento de Contrato: ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="29" y="700" width="543" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[2. Por Resolución del contrato: ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="49" y="720" width="523" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[2.1 A requerimiento de la ENTIDAD, por causales atribuibles al CONSULTOR:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="71" y="774" width="501" height="27"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[c) Por incumplimiento del objeto de contratación de la CONSULTORÍA en lo referente a terminos de referencia..]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="71" y="754" width="500" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[b) Por suspención en la provisión del la <b>CONSULTORÍA</b> sin justificación.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="70" y="740" width="501" height="14"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[a) Por incumplimiento en la realización de la <b>CONSULTORÍA</b> en el plazo establecido.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="49" y="801" width="523" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[2.2 A requerimiento del CONSULTOR, por causales atribuibles a la ENTIDAD:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="71" y="821" width="501" height="27"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[a) Si apartándose de los términos del Contrato, la <b>ENTIDAD</b> pretende efectuar modificaciones a los términos de referencia.]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="64" splitType="Stretch">
+			<staticText>
+				<reportElement x="95" y="17" width="379" height="36"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MODELO DE CONTRATO ADMINISTRATIVO PARA LA PRESTACION DE SERVICIOS DE CONSULTORIA EN CONTRATACION MENOR (SEÑALAR SI ES INDIVIDUAL O PRODUCTO)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="968" splitType="Stretch">
+			<textField>
+				<reportElement x="34" y="835" width="218" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="none">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{REP_LEG_CONTRATANTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="835" width="219" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="none">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{PROPONENTE_ADJUDICADO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="869" width="219" height="14"/>
+				<textElement textAlignment="Center" markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{DENO_PROPONENTE_ADJUDICADO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="719" width="572" height="53"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["En señal de conformidad y para su fiel y estricto cumplimiento, suscribimos el presente <b>CONTRATO</b> en cuatro ejemplares de un mismo tenor y validez, el/la "+$F{REP_LEG_CONTRATANTE}+", en representación legal de la Universidad Mayor de San Andrés, y el/la Sr. (a)."+$F{PROPONENTE_ADJUDICADO}+" como <b>CONSULTOR</b> contratado"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="657" width="571" height="42"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[En caso surgir dudas sobre los derechos y obligaciones de las partes durante la ejecución del presente contrato, las partes acudirán a los términos y condiciones del contrato, Documento Base de Contratación, propuesta adjudicada, sometidas a la Jurisdicción Coactiva Fiscal.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="2" y="811" width="570" height="14"/>
+				<textElement textAlignment="Justified" markup="none">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$P{fecha_registro_contrato}+"."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="772" width="570" height="27"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Este documento, conforme a disposiciones legales de control fiscal vigentes, será registrado ante la Contraloría General del Estado en idioma castellano.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="637" width="572" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA VIGÉSIMA.- (SOLUCIÓN DE CONTROVERSIAS)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="699" width="572" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLÁUSULA VIGÉSIMA PRIMERA.- (CONSENTIMIENTO)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="29" width="498" height="27"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[c) Por instrucciones injustificadas emanadas por la <b>ENTIDAD</b> para la suspensión del servicio por más de treinta (30) días calendario.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="76" width="498" height="30"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Si se presentaran situaciones de fuerza mayor o caso fortuito que imposibiliten la ejecución del contrato o vayan contra los intereses del Estado, se podrá resolver el contrato.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="56" width="520" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.3 Por causas de fuerza mayor o caso fortuito:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="106" width="520" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.4 Por acuerdo entre partes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="126" width="499" height="30"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Procederá cuando ambas partes otorguen su consentimiento con el objetivo de terminar con la Relación contractual, bajo las siguientes condiciones:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="166" width="498" height="16"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[a) Que la voluntad del Consultor, sea libre y plena;
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="182" width="498" height="30"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[b) Que la voluntad de la Entidad, se otorgue cuando haya  inexistencia de causa de resolución imputable al Consultor;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="212" width="499" height="40"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[c) Que la voluntad de la Entidad, se otorgue cuando existan razones de interés público u otras circunstancias de carácter excepcional que hagan innecesaria o inconveniente la permanencia del contrato.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="252" width="485" height="13"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[d) Que exista un beneficio mutuo entre las partes.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="0" width="497" height="29"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[b) Por incumplimiento en los pagos por más de sesenta (60) días calendario computados a partir de la fecha en la que debía efectivizarse el pago.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="265" width="523" height="28"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.5 Procedimiento de Resolución por causas atribuibles a las partes o por fuerza mayor o caso fortuito.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="293" width="497" height="43"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[De ocurrir una de las causas anteriormente señaladas, cualquiera de las partes deberá  notificar a la otra su intención de resolver el CONTRATO, estableciendo en forma clara y específica la causa en la que se funda.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="336" width="497" height="43"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[La primera notificación de intención de resolución del CONTRATO, deberá ser cursada en un plazo de cinco (5) días hábiles posteriores al hecho generador de la resolución del contrato, especificando la causal de resolución, que deberá ser efectuada mediante carta dirigida a la ENTIDAD o al PROVEEDOR según corresponda.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="379" width="499" height="43"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Si la causal argumentada es subsanada, no prosigue la resolución. Empero, si no existe solución a la conclusión en el plazo  de __________ <b>(señalar el plazo para subsanar las observaciones)</b>, se debe cursar una segunda carta comunicando que la resolución se ha hecho efectiva.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="422" width="499" height="43"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Cuando se efectúe la resolución del contrato se procederá a una liquidación de saldos deudores y acreedores de ambas partes, efectuándose los pagos a que hubiere lugar, conforme la evaluación del grado de cumplimiento de los términos de referencia.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="465" width="523" height="28"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.6 Procedimiento de Resolución por mutuo acuerdo.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="493" width="499" height="68"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Cuando se efectúe la resolución por mutuo acuerdo, ambas partes deberán suscribir un documento de Resolución de Contrato por mutuo acuerdo, el cual deberá contener la siguiente información: partes suscribientes, antecedentes, condiciones para la Resolución de Contrato por acuerdo mutuo (establecidas en el numeral 2.4 de la presente cláusula), objeto del documento, alcances de la Resolución, inexistencia de obligación y conformidad de las partes.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="561" width="499" height="76"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Cuando se efectúe la resolución por acuerdo mutuo se procederá a una liquidación de saldos deudores y acreedores de ambas partes, efectuándose los pagos a que hubiere lugar, conforme la evaluación del grado de cumplimiento de los términos de referencia. Asimismo, no procederá la ejecución de garantía de cumplimiento de contrato, ni la ejecución de las retenciones por concepto de garantía de cumplimiento de contrato, tampoco procederá la publicación del <b>CONSULTOR</b> en el SICOES como impedido de participar en procesos de contratación.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="869" width="220" height="14"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[R.P.A. - U.M.S.A.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="855" width="218" height="14"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECTORA ADMINISTRATIVA FINANCIERA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="307" y="855" width="219" height="14"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CI_PROPONENTE_ADJUDICADO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="907" width="198" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="none">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ASESOR_JURIDICO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="168" y="941" width="198" height="14"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[U.M.S.A.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="927" width="197" height="14"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ASESOR JURIDICO]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<jnlp spec="1.0+" codebase="http://200.7.166.211:8080/capricornio/" href="capricornio.jnlp">-->
+<!--jnlp spec="1.0+" codebase="http://localhost:8080/capricornio/" href="capricornio.jnlp"-->
+<jnlp spec="1.0+" codebase="http://200.7.160.182/capricornio/" href="capricornio.jnlp">
+  <information>
+    <title>SISTEMA DE SOLICITUD,PEDIDO Y ORDEN DE COMPRA - DIVISO DE ADQUISICIONES</title>
+    <vendor>umsa</vendor>
+    <description>umsa</description>
+    <description kind="short">
+      UNIVERSIDAD MAYOR DE SAN ANDRES
+    </description>    
+    <icon kind="splash" href="images/capricornio.jpg"/>
+    <offline-allowed/>
+  </information>
+
+  <security>
+    <all-permissions/>
+  </security>
+
+  <resources>
+    <j2se version="1.5+"/>
+    <jar href="lib/capricornio.jar"/>    
+    
+    <jar href="lib/axis.jar" />
+    <jar href="lib/commons-discovery-0.2.jar" />
+    <jar href="lib/commons-logging-1.0.4.jar" />    
+    <jar href="lib/jaxrpc.jar" />
+    <jar href="lib/ojdbc7.jar"/>
+    <!--<jar href="lib/mail.jar" />-->
+    <jar href="lib/wsdl4j-1.5.1.jar" />
+    
+    <jar href="lib/hessian-4.0.37.jar"/>
+    
+    <jar href="lib/jasperreports-3.7.6.jar"/>
+    <jar href="lib/commons-collections-3.2.1.jar"/>
+    <jar href="lib/commons-digester-1.7.jar"/>
+    <jar href="lib/commons-beanutils-1.8.2.jar"/>
+    <jar href="lib/iText-2.1.7.jar"/>
+    <jar href="lib/groovy-all-1.7.5.jar"/>
+
+    <jar href="lib/nachocalendar-0.23.jar"/>
+    
+    <jar href="lib/syntheticaBlackStar.jar"/>    
+    
+  </resources>
+
+  <application-desc main-class="umsa.capricornio.gui.inicio.FrmUsuarioIng">
+  </application-desc>
+</jnlp>

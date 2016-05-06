@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" 
+"http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+
+<web-app>
+	<servlet>
+		<servlet-name>capricornio</servlet-name><!-- mismo nombre del directorio de la aplicacion-->
+		<servlet-class>umsa.capricornio.gui.inicio.FrmUsuarioIng</servlet-class><!-- nombre de la clase principal de la aplicacion-->
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>capricornio</servlet-name> <!-- nombre del directorio principal de la aplicacion -->
+		<url-pattern>index</url-pattern> <!-- acceso a la aplicacion desde el enlace--> 
+	</servlet-mapping>
+</web-app>

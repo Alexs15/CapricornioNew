@@ -1,0 +1,1 @@
+keytool -genkey -alias capricornio -keyalg RSA -keystore firma -validity 360

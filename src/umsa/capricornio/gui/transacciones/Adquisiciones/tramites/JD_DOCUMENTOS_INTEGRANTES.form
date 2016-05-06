@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="DOCUMENTOS INTEGRANTES"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" pref="623" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel3" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                  <Component id="JD_GUARDAR" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="JD_SALIR" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="JD_GUARDAR" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JD_SALIR" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="JD_GUARDAR">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/umsa/capricornio/gui/images/save_16.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Guardar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JD_GUARDARActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="JD_SALIR">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/umsa/capricornio/gui/images/book_previous.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="SALIR"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JD_SALIRActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPanel2">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="99" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCheckBox3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCheckBox5" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jButton1" max="32767" attributes="0"/>
+                      <Component id="JTF_HOJA_RUTA" max="32767" attributes="0"/>
+                      <Component id="JTF_INF_COM_CALF" max="32767" attributes="0"/>
+                      <Component id="JTF_NOTA_ADQ" max="32767" attributes="0"/>
+                      <Component id="JTF_CERT_PPTA" max="32767" attributes="0"/>
+                      <Component id="JTF_RESOLUCION_INICIO" max="32767" attributes="0"/>
+                      <Component id="JTF_RES_ADJ" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="FECHA_CERT_PPTA" min="-2" max="-2" attributes="0"/>
+                      <Component id="FECHA_NOTA_ADQ" min="-2" max="-2" attributes="0"/>
+                      <Component id="FECHA_RESOLUCION_INICIO" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="FECHA_INF_COM_CALF" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="FECHA_RES_ADJ" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="FECHA_HOJA_RUTA" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="FECHA_NOTA_ADQ" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTF_NOTA_ADQ" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTF_CERT_PPTA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="FECHA_CERT_PPTA" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCheckBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTF_RESOLUCION_INICIO" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="FECHA_RESOLUCION_INICIO" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCheckBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTF_INF_COM_CALF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="FECHA_INF_COM_CALF" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTF_RES_ADJ" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="FECHA_RES_ADJ" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCheckBox6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTF_HOJA_RUTA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="FECHA_HOJA_RUTA" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="9" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JTextField" name="JTF_NOTA_ADQ">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTF_NOTA_ADQActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="net.sf.nachocalendar.components.DateField" name="FECHA_NOTA_ADQ">
+          <Properties>
+            <Property name="dateFormat" type="java.text.DateFormat" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="DateFormat.getDateInstance(DateFormat.MEDIUM)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="12" style="1"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FECHA_NOTA_ADQKeyPressed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="JTF_CERT_PPTA">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTF_CERT_PPTAActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="net.sf.nachocalendar.components.DateField" name="FECHA_CERT_PPTA">
+          <Properties>
+            <Property name="dateFormat" type="java.text.DateFormat" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="DateFormat.getDateInstance(DateFormat.MEDIUM)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="12" style="1"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FECHA_CERT_PPTAKeyPressed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="JTF_RESOLUCION_INICIO">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTF_RESOLUCION_INICIOActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="net.sf.nachocalendar.components.DateField" name="FECHA_RESOLUCION_INICIO">
+          <Properties>
+            <Property name="dateFormat" type="java.text.DateFormat" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="DateFormat.getDateInstance(DateFormat.MEDIUM)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="12" style="1"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FECHA_RESOLUCION_INICIOKeyPressed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="JTF_INF_COM_CALF">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTF_INF_COM_CALFActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="net.sf.nachocalendar.components.DateField" name="FECHA_INF_COM_CALF">
+          <Properties>
+            <Property name="dateFormat" type="java.text.DateFormat" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="DateFormat.getDateInstance(DateFormat.MEDIUM)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="12" style="1"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FECHA_INF_COM_CALFKeyPressed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="JTF_RES_ADJ">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTF_RES_ADJActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="net.sf.nachocalendar.components.DateField" name="FECHA_RES_ADJ">
+          <Properties>
+            <Property name="dateFormat" type="java.text.DateFormat" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="DateFormat.getDateInstance(DateFormat.MEDIUM)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="12" style="1"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FECHA_RES_ADJKeyPressed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="JTF_HOJA_RUTA">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTF_HOJA_RUTAActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="net.sf.nachocalendar.components.DateField" name="FECHA_HOJA_RUTA">
+          <Properties>
+            <Property name="dateFormat" type="java.text.DateFormat" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="DateFormat.getDateInstance(DateFormat.MEDIUM)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="12" style="1"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FECHA_HOJA_RUTAKeyPressed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No. NOTA ADQUISICIONES "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No. CERT.PPTA.:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No. RESOLUCION INICIO:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No. INF.COM.CALIFICACION:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No. RESOLUCION ADJUDICACION:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No. HOJA DE RUTA:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="OTRO"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPanel3">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="99" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                  <Component id="PnlDocumentos" min="-2" pref="504" max="-2" attributes="0"/>
+                  <EmptySpace pref="67" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="PnlDocumentos" min="-2" pref="162" max="-2" attributes="0"/>
+                  <EmptySpace pref="63" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="PnlDocumentos">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="JTbl_VPreventivo">
+              <Properties>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

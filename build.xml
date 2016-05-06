@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="capricornio" default="default" basedir=".">
+    <description>Builds, tests, and runs the project capricornio.</description>
+    <import file="nbproject/build-impl.xml"/>
+    
+    
+  <property name="nombre"  value="capricornio" />
+  <property name="war.dir"  value="war"/>
+  <property name="fuente"  value="." />
+  <property name="build.dir" value="build" />
+  <property name="clases"  value="class" />
+  <property name="lib.dir"  value="lib" />
+  <property name="tomcat"  value="/opt/tomcat" />
+  <property name="chart"  value="/opt/jfreechart-1.0.1" />
+  <property name="jasper" value="/opt/iReport-3.7.6/ireport/modules" />
+  <property name="calendar" value="/opt/nachocalendar-0.23/" />
+  <property name="hessian" value="/opt/hessian/" />
+  <property name="ojdbc7" value="/opt/ojdbc/" />
+  <property name="axis" value="/opt/axis-1.4/" />
+  <property name="dist.dir"   value="dist"/>
+  <property name="look"   value="/opt/look-feel/"/>
+
+  <!-- se crea el path para la compilacion de las clases-->
+  <path id="master-classpath">
+	<fileset dir="${jasper}/ext">
+		<include name="jasperreports-3.7.6.jar"/>
+	</fileset>
+        <fileset dir ="${axis}/lib" >
+            <include name = "axis.jar" />
+            <include name = "commons-discovery-0.2.jar" />
+            <include name = "commons-logging-1.0.4.jar" />
+            <include name = "jaxrpc.jar" />
+            <include name = "wsdl4j-1.5.1.jar" />
+            <include name = "mail.jar" />
+        </fileset>
+        <!--<fileset dir="${chart}/lib">
+		<include name="jcommon-1.0.0.jar"/>
+                <include name="jfreechart-1.0.1.jar"/>
+	</fileset>-->
+        <fileset dir="${calendar}/lib/">
+            <include name="nachocalendar-0.23.jar"/>
+        </fileset>
+        <fileset dir="${hessian}/">
+            <include name="hessian-4.0.37.jar"/>
+        </fileset>
+        <fileset dir="${ojdbc7}/">
+            <include name="ojdbc7.jar"/>
+        </fileset>
+        
+        <fileset dir="${look}/BlackStar/">
+            <include name="syntheticaBlackStar.jar"/>
+        </fileset>
+  </path>
+
+<!-- importa un archivo tipo properties que contiene la firma, password y alias-->
+  <property file="proyecto.properties"/>
+
+  <!-- menu desplegable, corre haciendo solo ant desde la linea de comando-->
+  <target name="uso">
+        <echo message=""/>
+        <echo message="Constructor de tuneles para las hormigas (Ant)"/>
+        <echo message="---------- ++ ++ ------------"/>
+        <echo message=""/>
+        <echo message="variables habilitadas"/>
+        <echo message=""/>
+        <echo message="limpia     --> Limpia los compilados"/>
+        <echo message="compila    --> Compila los archivos principales de Java"/>
+        <echo message="todo       --> Limpia y compila los archivos"/>
+  </target>
+
+  <!-- borra todos los archivos compilados -->
+  <target name="limpia" description="Limpia las classes de los compilados">
+        <delete dir="${war.dir}/WEB-INF/${clases}"/>
+        <delete dir="${build.dir}"/>
+        <delete dir="${tomcat}/webapps/${nombre}"/>
+        <delete dir="${dist.dir}"/>
+  </target>
+
+  <!-- crea los directorios y compila los archivos -->
+  <target name="compila" description="compila la aplicacion">
+    <mkdir dir="${war.dir}/WEB-INF/${clases}"/>
+    <mkdir dir="${build.dir}"/>
+
+    <!--compila los archivos-->
+    <javac srcdir="${fuente}" destdir="${war.dir}/WEB-INF/${clases}">
+         <classpath refid="master-classpath"/>
+    </javac>
+
+    <!--copiamos las imagenes al directorio-->
+    <mkdir dir ="${war.dir}/WEB-INF/${clases}/umsa/capricornio/gui/images"/>
+    <copy todir="${war.dir}/WEB-INF/${clases}/umsa/capricornio/gui/images" preservelastmodified="true">
+        <fileset dir="src/umsa/capricornio/gui/images">
+            <include name="*.*"/>
+        </fileset>
+    </copy>
+
+    <!--copiamos la carpeta de los archivos jasper-->
+    <mkdir dir ="${war.dir}/WEB-INF/${clases}/umsa/capricornio/gui/reports"/>
+    <copy todir="${war.dir}/WEB-INF/${clases}/umsa/capricornio/gui/reports" preservelastmodified="true">
+        <fileset dir="src/umsa/capricornio/gui/reports">
+            <include name="*.jasper"/>
+        </fileset>
+    </copy>
+
+    <!--copiamos la firma-->
+    <mkdir dir ="${war.dir}/WEB-INF/${clases}/umsa/capricornio/gui/firma"/>
+    <copy todir="${war.dir}/WEB-INF/${clases}/umsa/capricornio/gui/firma" preservelastmodified="true">
+        <fileset dir="src/umsa/capricornio/gui/firma">
+            <include name="*.frm"/>
+        </fileset>
+    </copy>
+
+    <!-- crea el archivo jar -->
+    <jar jarfile="${build.dir}/${nombre}.jar" basedir="${war.dir}/WEB-INF/${clases}" compress="true"/>
+
+    <copy todir="${build.dir}" preservelastmodified="true">        
+        <fileset dir="${jasper}/ext/">
+            <include name="jasperreports-3.7.6.jar"/>
+            <include name="iText-2.1.7.jar"/>
+            <include name="commons-digester-1.7.jar"/>
+            <include name="commons-collections-3.2.1.jar"/>
+            <include name="commons-beanutils-1.8.2.jar"/>
+            <include name="groovy-all-1.7.5.jar"/>
+	</fileset>
+        <fileset dir ="${axis}/lib/" >            
+            <include name = "axis.jar" />
+            <include name = "commons-discovery-0.2.jar" />
+            <include name = "commons-logging-1.0.4.jar" />
+            <include name = "jaxrpc.jar" />
+            <include name = "wsdl4j-1.5.1.jar" />
+            <include name = "mail.jar" />
+        </fileset>
+        <!--<fileset dir="${chart}/lib/">
+            <include name="jfreechart-1.0.1.jar"/>
+            <include name="jcommon-1.0.0.jar"/>
+	</fileset>  -->
+        <fileset dir="${calendar}/lib/">
+            <include name="nachocalendar-0.23.jar"/>
+        </fileset>
+        <fileset dir="${hessian}/">
+            <include name="hessian-4.0.37.jar"/>
+        </fileset>
+        <fileset dir="${ojdbc7}/">
+            <include name="ojdbc7.jar"/>
+        </fileset>
+        <fileset dir="${look}/BlackStar/">
+            <include name="syntheticaBlackStar.jar"/>
+        </fileset>
+    </copy>
+
+    <!-- coloca la firma digital al archivo jar -->
+    <signjar lazy="true" alias="${asigna.alias}" storepass="${asigna.password}" keystore="${asigna.firma}" verbose="true">
+	<fileset dir="${build.dir}">
+            <include name="**/*.jar" />
+	</fileset>
+    </signjar>
+  </target>
+
+  <!-- copia al servidor los archivos necesarios -->
+  <target name="copiaweb" depends="compila" description="copia las clases,index y jnlp al servidor">
+        <copy todir="${tomcat}/webapps/${nombre}" preservelastmodified="true">
+            <fileset dir="${war.dir}">
+                <include name="**/*.*"/> <!--copia todos los archivos de este directorios-->
+            </fileset>
+        </copy>
+        <mkdir dir="${tomcat}/webapps/${nombre}/${lib.dir}"/>
+        <copy todir="${tomcat}/webapps/${nombre}/${lib.dir}" preservelastmodified="true">
+            <fileset dir="${build.dir}">
+                <include name="**/*.*"/>
+            </fileset>
+        </copy>
+
+  </target>
+
+<!-- genera archivo war  -->
+ <target name="archivowar" description="Build the web application archive">
+                <mkdir dir="${dist.dir}"/>
+                <delete dir ="${tomcat}/webapps/${nombre}/WEB-INF/${clases}"/>
+		<war warfile="${dist.dir}/${nombre}.war" basedir="${tomcat}/webapps/${nombre}" webxml="war/WEB-INF/web.xml">
+			<include name="*"/>
+			<include name="WEB-INF/*"/>
+                        <!--<include name="WEB-INF/class/*"/>-->
+                        <include name="lib/*"/>
+                        <include name="images/*"/>
+                        <include name="subreports/*"/>
+		</war>
+
+  </target>
+
+  <!-- es ovio y no es necesario explicar-->
+  <target name="todo" depends="limpia,compila,copiaweb,archivowar" description="cimpila y lo caraga en el servidor"/>
+  
+</project>

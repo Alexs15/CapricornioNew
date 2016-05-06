@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IngresoMaterialPeriodico" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="articulo" class="java.lang.String">
+		<fieldDescription><![CDATA[articulo]]></fieldDescription>
+	</field>
+	<field name="fecha_envio" class="java.util.Date">
+		<fieldDescription><![CDATA[fecha_envio]]></fieldDescription>
+	</field>
+	<field name="unidad_sol" class="java.lang.String">
+		<fieldDescription><![CDATA[unidad_sol]]></fieldDescription>
+	</field>
+	<field name="unidad_medida" class="java.lang.String">
+		<fieldDescription><![CDATA[unidad_medida]]></fieldDescription>
+	</field>
+	<field name="cantidad_pedido" class="java.lang.Integer">
+		<fieldDescription><![CDATA[cantidad_pedido]]></fieldDescription>
+	</field>
+	<field name="nro_ingreso" class="java.lang.Integer">
+		<fieldDescription><![CDATA[nro_ingreso]]></fieldDescription>
+	</field>
+	<field name="cbte" class="java.lang.String">
+		<fieldDescription><![CDATA[cbte]]></fieldDescription>
+	</field>
+	<field name="memo" class="java.lang.String">
+		<fieldDescription><![CDATA[memo]]></fieldDescription>
+	</field>
+	<field name="nro_orden_compra" class="java.lang.Integer">
+		<fieldDescription><![CDATA[nro_orden_compra]]></fieldDescription>
+	</field>
+	<field name="precio_unit" class="java.lang.Double">
+		<fieldDescription><![CDATA[precio_unit]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String"/>
+	<field name="hoja_ruta" class="java.lang.String"/>
+	<field name="casa_comercial" class="java.lang.String"/>
+	<variable name="total" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{cantidad_pedido}*$F{precio_unit}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="125" y="4" width="503" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DETALLE DE DOCUMENTOS ENVIADOS A INVENTARIOS Y CONTABILIDAD]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="0" width="38" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CBTE.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="0" width="42" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEMO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="0" width="183" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIDAD SOLICITANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="701" y="0" width="51" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="0" width="38" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HOJA RUTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="0" width="81" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CASA COMERCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="427" y="0" width="142" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ARTICULO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="593" y="0" width="36" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nro. INGRESO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="629" y="0" width="36" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENVIO A INVENTARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="665" y="0" width="36" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENVIO A CONTABILIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="569" y="0" width="24" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="45" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha_envio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="87" y="0" width="38" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cbte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="0" width="42" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{memo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="0" width="142" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{articulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="0" width="183" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{unidad_sol}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="701" y="0" width="51" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="0" width="38" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{hoja_ruta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="346" y="0" width="81" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{casa_comercial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="593" y="0" width="36" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{nro_ingreso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="569" y="0" width="24" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="632" y="5" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Pag. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="712" y="5" width="40" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

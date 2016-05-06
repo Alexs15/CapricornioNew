@@ -1,0 +1,533 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package umsa.capricornio.gui.transacciones.Adquisiciones.tramites;
+import java.rmi.RemoteException;
+import java.text.DateFormat;
+import java.util.Map;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
+import javax.swing.event.TableModelEvent;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.xml.rpc.ServiceException;
+import umsa.capricornio.domain.Proveedor;
+import umsa.capricornio.gui.ConnectADQUI.AdquiWSServiceLocator;
+import umsa.capricornio.gui.ConnectADQUI.AdquiWS_PortType;
+import umsa.capricornio.gui.menu.FrmMenu;
+import umsa.capricornio.gui.transacciones.Adquisiciones.BancoProveedor.DiagBuscaProveedor;
+import umsa.capricornio.gui.transacciones.Adquisiciones.BancoProveedor.tablas.TablaProponentesBusca;
+import umsa.capricornio.gui.transacciones.Adquisiciones.BancoProveedor.tablas.NewRenderJTproponentes;
+import umsa.capricornio.utilitarios.herramientas.MiRenderer;
+/**
+ *
+ * @author UMSA-JES
+ */
+public class ProponentesDialog extends javax.swing.JDialog {
+    
+    private int nroFilas=0;
+    public Proveedor proveedor=null;
+    public Proveedor proveedor_adj=null;
+    private TablaProponentesBusca tblProv;
+    FrmMenu menu; 
+    private int cod_transaccion;
+    private int cod_trans_nro;
+    DiagBuscaProveedor prov;
+    private String tprov;
+    private String tbche;
+
+    /**
+     * Creates new form ProponentesDialog
+     */
+    public ProponentesDialog(java.awt.Frame parent, boolean modal, int cod_transaccion, int cod_trans_nro) {
+        //this.menu=parent;
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.ConstruyeTablaProp();
+        this.cod_trans_nro=cod_trans_nro;
+        this.cod_transaccion=cod_transaccion;
+        System.out.println("======================= importante --> cod_transaccion: "+this.cod_transaccion+" cod_trans_nro: "+this.cod_trans_nro);
+        LlenaProponentes();
+        setOcultarColumnasJTable(new int[]{1,2});
+    }
+    private void setOcultarColumnasJTable(int columna[])
+    {
+        System.out.println("preciso meu irmao");
+        for(int i=0;i<columna.length;i++)
+        {
+             TablaProponentes.getColumnModel().getColumn(columna[i]).setMaxWidth(0);
+             TablaProponentes.getColumnModel().getColumn(columna[i]).setMinWidth(0);
+             TablaProponentes.getTableHeader().getColumnModel().getColumn(columna[i]).setMaxWidth(0);
+             TablaProponentes.getTableHeader().getColumnModel().getColumn(columna[i]).setMinWidth(0);
+        }
+    }
+    private void LlenaProponentes(){
+        try{
+            AdquiWSServiceLocator servicio = new AdquiWSServiceLocator();
+            AdquiWS_PortType puerto = servicio.getAdquiWS();
+            Map[] datos=puerto.getProponentes(this.cod_transaccion, this.cod_trans_nro);
+            //CerearTablaItems
+            //NuevoRender();
+            if (datos!=null){
+                System.out.println("Entro llena proponentes...");
+                for (int c=this.nroFilas;c<datos.length;c++){
+                    
+                    tblProv.insert(c);
+                    TablaProponentes.tableChanged(new TableModelEvent(tblProv, c, c, TableModelEvent.ALL_COLUMNS,TableModelEvent.INSERT));
+                    TablaProponentes.setValueAt(datos[c].get("COD_PROVEEDOR"),c,0);
+                    TablaProponentes.setValueAt(datos[c].get("TIPO"),c,1);                    
+                    TablaProponentes.setValueAt(datos[c].get("CLASE"),c,2);                    
+                    TablaProponentes.setValueAt(datos[c].get("NOMBRE"),c,3);
+                    TablaProponentes.setValueAt(datos[c].get("NOMBRE_COMERCIAL"),c,4);
+                    TablaProponentes.setValueAt(datos[c].get("TELEFONO"),c,6);
+                    TablaProponentes.setValueAt(datos[c].get("DIRECCION"),c,5);
+                    TablaProponentes.setValueAt(datos[c].get("ESTADO"),c,7);
+                    ///modificado
+                }
+            }
+            
+        }
+        catch (RemoteException e){
+            javax.swing.JOptionPane.showMessageDialog(this,"<html> error de conexion con el servidor <br> "+e,"SYSTEM CAPRICORN",
+                        javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+        catch (ServiceException e){ System.out.println(e);}
+    }
+    private void ConstruyeTablaProp(){
+        tblProv = new TablaProponentesBusca();
+        this.TablaProponentes.setAutoCreateColumnsFromModel(false);
+        this.TablaProponentes.setModel(tblProv);
+        
+        for (int k = 0; k < TablaProponentesBusca.m_columns.length; k++) {
+            TableCellRenderer renderer = new MiRenderer(TablaProponentesBusca.m_columns[k].m_alignment);
+            /*DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setHorizontalAlignment(DatosTablaObligacionBandeja.m_columns[k].m_alignment);*/
+            TableColumn column = new TableColumn(k, TablaProponentesBusca.m_columns[k].m_width, renderer, null);
+            TablaProponentes.addColumn(column);
+        }
+        
+        
+        JTableHeader header = TablaProponentes.getTableHeader();
+        header.setUpdateTableInRealTime(true);
+        header.setReorderingAllowed(true);
+        PanelProponentes.getViewport().add(TablaProponentes);
+    }
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        PanelProponentes = new javax.swing.JScrollPane();
+        TablaProponentes = new javax.swing.JTable();
+        BtnBuscaProveedor = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setModal(true);
+
+        jPanel1.setBackground(new java.awt.Color(185, 203, 221));
+
+        PanelProponentes.setViewportView(TablaProponentes);
+
+        BtnBuscaProveedor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        BtnBuscaProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/umsa/capricornio/gui/images/magnifier.png"))); // NOI18N
+        BtnBuscaProveedor.setText("Buscar");
+        BtnBuscaProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscaProveedorActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/umsa/capricornio/gui/images/accept.png"))); // NOI18N
+        jButton1.setText("Adjudicar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 0, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/umsa/capricornio/gui/images/book_previous.png"))); // NOI18N
+        jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/umsa/capricornio/gui/images/cancel.png"))); // NOI18N
+        jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("Listado de Proponentes");
+
+        jLabel2.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel2.setText("- Puede seleccionar un propoponente para la orden de compra, directamente de la base de datos del SIGMA. ");
+
+        jLabel3.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel3.setText("- Puede adjudicar a un determinado proveedor a la orden de compra.");
+
+        jLabel4.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel4.setText("- Puede cambiar al proveedor seleccionado o adicionar mas proponentes, en cualquier momento.");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addComponent(PanelProponentes, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(306, 306, 306)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(315, 315, 315)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jButton1)
+                                        .addGap(59, 59, 59)
+                                        .addComponent(BtnBuscaProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(47, 47, 47)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PanelProponentes, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnBuscaProveedor)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+    
+    private void BtnBuscaProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscaProveedorActionPerformed
+        prov = new DiagBuscaProveedor(menu);
+        prov.AbreDialogo();
+        //JRadioButton male = new JRadioButton("male");
+        //JRadioButton female = new JRadioButton("Female");
+        //ButtonGroup bG = new ButtonGroup();
+        //bG.add(male);
+        //bG.add(female);
+        
+        if (prov.ProveedorElejido().getCod_proveedor()!=null){
+            
+            proveedor= prov.ProveedorElejido();
+            
+            //TxtCasa.setText(proveedor.getCasa_comercial());
+            //TablaProponentes.setValueAt(proveedor.getCasa_comercial(), 0, 0);
+            try {
+                AdquiWSServiceLocator servicio = new AdquiWSServiceLocator();
+                AdquiWS_PortType puerto = servicio.getAdquiWS();
+//                System.out.println("la transaccion tiene como -->  cod_transaccion: "+this.cod_transaccion+" cod_trans_nro: "+this.cod_trans_nro);
+//                System.out.println("1 -- "+String.valueOf(proveedor.getCod_proveedor()));
+//                System.out.println("2 -- "+this.cod_transaccion);
+//                System.out.println("3 -- "+this.cod_trans_nro);
+//                System.out.println("4 -- "+this.proveedor.getTipo_cod());
+//                System.out.println("5 -- ");
+//                System.out.println("6 -- ");
+//                System.out.println("7 -- ");
+                System.out.println("**************** cod_proveedor: "+proveedor.getCod_proveedor());
+                System.out.println("**************** cod_transaccion: "+this.cod_transaccion);
+                System.out.println("**************** cod_trans_nro: "+this.cod_trans_nro);
+               
+                System.out.println("**************** tipo_cod: "+this.proveedor.getTipo_cod());
+                System.out.println("**************** clase: "+this.proveedor.getClase());
+                System.out.println("**************** nombre: "+this.proveedor.getNombre());
+                System.out.println("**************** casa_comercial: "+this.proveedor.getCasa_comercial());
+                System.out.println("**************** direccion: "+this.proveedor.getDireccion());
+                System.out.println("**************** telefono: "+this.proveedor.getTelefono());
+                System.out.println("**************** adh_nombre: "+this.proveedor.getAdh_nombre());
+                
+                
+                
+                Map[] datos=puerto.addProponente11(String.valueOf(proveedor.getCod_proveedor()),this.cod_transaccion ,this.cod_trans_nro,this.proveedor.getTipo_cod(),this.proveedor.getClase(),this.proveedor.getNombre().replace("'", ""),this.proveedor.getCasa_comercial().replace("'", ""),this.proveedor.getDireccion(),this.proveedor.getTelefono(),this.proveedor.getAdh_nombre(),1);
+                //Map[] datos=puerto.getProponentes(20);
+                //System.out.println("Tamaño "+datos.length);
+                //puerto.setGestion("SET-insDataGes", 2016);
+                System.out.println("EXITO");
+               
+                tblProv.insert(this.nroFilas);
+                TablaProponentes.tableChanged(new TableModelEvent(tblProv, this.nroFilas, this.nroFilas, TableModelEvent.ALL_COLUMNS,TableModelEvent.INSERT));
+                TablaProponentes.setValueAt(proveedor.getCod_proveedor(),this.nroFilas,0);
+                TablaProponentes.setValueAt(proveedor.getTipo_cod(),this.nroFilas,1);
+                TablaProponentes.setValueAt(proveedor.getClase(),this.nroFilas,2);
+                TablaProponentes.setValueAt(proveedor.getNombre(),this.nroFilas,3);
+                TablaProponentes.setValueAt(proveedor.getCasa_comercial(),this.nroFilas,4);
+                TablaProponentes.setValueAt(proveedor.getDireccion(),this.nroFilas,5);
+                TablaProponentes.setValueAt(proveedor.getTelefono(),this.nroFilas,6);
+                TablaProponentes.setValueAt(proveedor.getEstado(),this.nroFilas,7);
+                //TablaProponentes.setValueAt(male,0,3);
+                System.out.println("Changos :D");
+                this.nroFilas++;
+            } catch (Exception e) {
+                System.out.println("ERROR --> "+e);
+            }
+            
+        }
+            
+
+    }//GEN-LAST:event_BtnBuscaProveedorActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public Proveedor ProveedorElejido(){
+        return proveedor;
+    }
+    public Proveedor ProveedorAdj(){
+        return proveedor_adj;
+    }
+    public void NuevoRender(){
+        System.out.println("Tratando de cambiar de Render");
+        TablaProponentes.setDefaultRenderer(Object.class, new NewRenderJTproponentes());
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        // TODO add your handling code here:
+        int fila = TablaProponentes.getSelectedRow();
+        if (fila<0)
+            return;
+        
+        //TablaProponentes.getr
+        String documento=String.valueOf(TablaProponentes.getValueAt(fila,0));
+        String tipo=String.valueOf(TablaProponentes.getValueAt(fila,1));
+        String clase=String.valueOf(TablaProponentes.getValueAt(fila,2));
+        String nombre=String.valueOf(TablaProponentes.getValueAt(fila,3));;
+        String nombre_comercial=String.valueOf(TablaProponentes.getValueAt(fila,4));
+        String direccion=String.valueOf(TablaProponentes.getValueAt(fila,5));
+        String telefono=String.valueOf(TablaProponentes.getValueAt(fila,6));
+        
+        System.out.println("documento: "+documento+" tipo: "+tipo+" clase: "+clase+" nombre: "+nombre+" nombre_c: "+nombre_comercial+" direccion: "+direccion+" telefono: "+telefono);
+        // proveedor.setCod_proveedor(TablaProponentes.getValueAt(fila,0).toString()); 
+        //this.proveedor = this.ProveedorElejido();
+                
+        this.proveedor_adj= new Proveedor();
+        proveedor_adj.setCod_proveedor(documento);
+        proveedor_adj.setTipo_cod(tipo);
+        proveedor_adj.setClase(clase);
+        proveedor_adj.setNombre(nombre);
+        proveedor_adj.setNombre(nombre_comercial);
+        proveedor_adj.setDireccion(direccion);
+        proveedor_adj.setTelefono(telefono);
+        
+        
+        System.out.println("codigo del elegido: "+this.ProveedorAdj().getCod_proveedor());
+        //System.out.println("Okey: "+this.ProveedorElejido().getCod_proveedor());
+        //String dir_email=String.valueOf(TablaProponentes.getValueAt(fila,10));;
+        /*String nl = System.getProperty("line.separator");
+        javax.swing.JOptionPane.showMessageDialog(this,
+        "DOCUMENTO: "+documento +nl+"TIPO DE DOCUMENTO: "+ tipo +nl+"CLASE: "+clase+nl+"NOMBRE: "+nombre+nl+"NOMBRE COMERCIAL: "+nombre_comercial ,
+          "¿DESEA ADJUDICAR LA ORDEN AL SIGUIENTE PROVEEDOR?", javax.swing.JOptionPane.YES_NO_CANCEL_OPTION);*/
+        
+        int dialogResult = javax.swing.JOptionPane.showConfirmDialog (this, "¿Esta seguro(a) de adjudicar la orden de compra a\n NOMBRE: "+nombre+"\n NOMBRE COMERCIAL: "+nombre_comercial+"\n DOCUMENTO: "+documento+"?","ADJUDICAR ORDEN DE COMPRA",javax.swing.JOptionPane.YES_NO_OPTION);
+        if(dialogResult == javax.swing.JOptionPane.YES_OPTION){
+            
+            System.out.println("codigo del elegido dentro: "+this.ProveedorAdj().getNombre());
+            System.out.println("Okey vaaa :D");
+            this.setVisible(false);
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void eliminaprop_tabla(int fila)
+    {
+        String vt1[],vt2[];
+        String n1="",n2="";
+        try {
+            AdquiWSServiceLocator servicio = new AdquiWSServiceLocator();
+            AdquiWS_PortType puerto = servicio.getAdquiWS();
+            Map[] datos =puerto.getResAdjObra(cod_trans_nro);
+            if(datos!=null)
+            {
+                this.tprov=datos[0].get("NUM_INF_HP").toString();
+                this.tbche=datos[0].get("CONVOCATORIA").toString();
+                vt1=tprov.split(",");
+                vt2=tbche.split(",");
+                int f=fila+1;
+                for(int i=1;i<=vt1.length-1;i++)
+                {
+                    if(i!=f)
+                    {
+                        //n1=n1+","+vt1[i];
+                        System.out.println("esto si sale: "+vt1[i]);
+                    }
+                    else
+                    {
+                        System.out.println("esto no sale: "+vt1[i]);
+                        f=f+1;
+                    }
+                }
+                for(int i=1;i<=vt2.length-1;i++)
+                {
+                    if(i!=f)
+                    {
+                        //n2=n2+","+vt2[i];
+                        System.out.println("esto si sale en chaeck: "+vt2[i]);
+                    }
+                }
+                puerto.updatetabla1(n1,n2,this.cod_trans_nro);
+            }
+        } catch (Exception e) {
+        }
+    }
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        int fila = TablaProponentes.getSelectedRow();
+        
+        if (fila<0)
+            return;    
+        String documento=String.valueOf(TablaProponentes.getValueAt(fila,0));
+        
+        int dialogResult = javax.swing.JOptionPane.showConfirmDialog (this, "¿Esta seguro(a) de eliminar el proponente con \n CODIGO: "+documento+"","ADJUDICAR ORDEN DE COMPRA",javax.swing.JOptionPane.YES_NO_OPTION);
+        if(dialogResult == javax.swing.JOptionPane.YES_OPTION){
+            //System.out.println("codigo del elegido dentro: "+this.ProveedorElejido().getNombre());
+            System.out.println("Okey vaaa :D");
+            try {
+                AdquiWSServiceLocator servicio = new AdquiWSServiceLocator();
+                AdquiWS_PortType puerto = servicio.getAdquiWS();
+                eliminaprop_tabla(fila);
+                puerto.delProponente(documento, this.cod_transaccion, this.cod_trans_nro);
+                System.out.println("Hay Caramba :D :D :D :D :D");
+                this.setVisible(false);
+            } catch (Exception e) {
+            }
+            this.setVisible(false);
+            
+        }else
+            System.out.println("entonces sea el codigo trans_nro --> ");
+        
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ProponentesDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ProponentesDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ProponentesDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ProponentesDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                ProponentesDialog dialog = new ProponentesDialog(new javax.swing.JFrame(), true,0,0);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
+    
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnBuscaProveedor;
+    private javax.swing.JScrollPane PanelProponentes;
+    private javax.swing.JTable TablaProponentes;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    // End of variables declaration//GEN-END:variables
+}

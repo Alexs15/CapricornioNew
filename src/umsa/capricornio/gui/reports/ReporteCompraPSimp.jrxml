@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteCompraP" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.948717100000004"/>
+	<property name="ireport.x" value="645"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FECHA_INICIO" class="java.util.Date"/>
+	<parameter name="FECHA_FINAL" class="java.util.Date"/>
+	<parameter name="DIR1" class="java.lang.String"/>
+	<parameter name="DIR2" class="java.lang.String"/>
+	<parameter name="DIR3" class="java.lang.String"/>
+	<parameter name="DIR4" class="java.lang.String"/>
+	<parameter name="DIR5" class="java.lang.String"/>
+	<parameter name="COD_USER" class="java.lang.Integer"/>
+	<parameter name="MONTO_MENOR" class="java.lang.Integer"/>
+	<parameter name="MONTO_MAYOR" class="java.lang.Integer"/>
+	<parameter name="TOTAL" class="java.lang.String"/>
+	<parameter name="USUARIO" class="java.lang.String"/>
+	<parameter name="DIAS_MENOS" class="java.lang.Integer"/>
+	<parameter name="DIAS_MENOS2" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select sum(ppp.MONTO_PPTO) as TOTAL, COUNT(DISTINCT ppp.NRO) AS COUNT
+from
+(select DISTINCT t2.COD_USUARIO,t2.NRO,t4.DE,t4.DETALLE,t4.COD_TRANSACCION,t4.HOJA_RUTA,t2.COD_USUARIO,t2.OBS,p1.NOMBRE_COMERCIAL,(CASE WHEN t4.CBTE IS NULL THEN t6.COD_PREVENTIVO ELSE T4.CBTE END) AS CBTE,(CASE WHEN t4.MONTO_PPTO IS NULL THEN (CASE WHEN t6.total IS NULL THEN 0 ELSE to_number(t6.TOTAL,'9999999.9999999') END ) ELSE t4.MONTO_PPTO END) as MONTO_PPTO
+from (select t1.COD_TRANS_DETALLE,t1.ESTADO,((SELECT MIN(t.FECHA_ENVIO) AS FEC FROM TRANSACCION_ENVIO_FECHA t where t.COD_TRANS_DETALLE=t1.COD_TRANS_DETALLE and t.ESTADO not like 'B' and t.ESTADO not like 'PPTO' and t.ESTADO not like 'ADQ')) as f
+from TRANSACCION_ENVIO_FECHA t1) y1
+INNER JOIN TRANSACCION_ENVIO_FECHA y2 ON y2.FECHA_ENVIO=y1.F and y1.COD_TRANS_DETALLE=y2.COD_TRANS_DETALLE and y2.FECHA_ENVIO between $P{FECHA_INICIO} AND $P{FECHA_FINAL}
+INNER JOIN TRANSACCION_DETALLE t1 ON t1.COD_TRANS_DETALLE=y1.COD_TRANS_DETALLE
+INNER JOIN TRANSACCION_NRO t2 ON t2.COD_TRANSACCION=t1.COD_TRANSACCION and t2.NRO is not null and t2.COD_TRAMITE=2 and t2.COD_USUARIO=$P{COD_USER}
+INNER JOIN PROPONENTES p1 ON p1.COD_TRANS_NRO=t2.COD_TRANS_NRO and p1.ESTADO='V'
+LEFT OUTER JOIN TRANSACCION_PREVENTIVO t6 ON t6.COD_TRANSACCION=t2.COD_TRANSACCION AND TO_NUMBER(t6.TOTAL,'9999999.999999') BETWEEN $P{MONTO_MENOR} and $P{MONTO_MAYOR}
+LEFT OUTER JOIN TRANSACCION_DET_COMPLEMENTO t5 ON t5.COD_TRANS_DETALLE=t1.COD_TRANS_DETALLE
+LEFT OUTER JOIN TRANSACCION t4 ON t2.COD_TRANSACCION=t4.COD_TRANSACCION) ppp]]>
+	</queryString>
+	<field name="TOTAL" class="java.math.BigDecimal"/>
+	<field name="COUNT" class="java.lang.String"/>
+	<group name="bienes">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="19">
+				<subreport>
+					<reportElement x="0" y="0" width="752" height="15"/>
+					<subreportParameter name="DIAS_MENOS">
+						<subreportParameterExpression><![CDATA[$P{DIAS_MENOS}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="DIAS_MENOS2">
+						<subreportParameterExpression><![CDATA[$P{DIAS_MENOS2}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FECHA_INICIO">
+						<subreportParameterExpression><![CDATA[$P{FECHA_INICIO}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="COD_USER">
+						<subreportParameterExpression><![CDATA[$P{COD_USER}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FECHA_FINAL">
+						<subreportParameterExpression><![CDATA[$P{FECHA_FINAL}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="MONTO_MENOR">
+						<subreportParameterExpression><![CDATA[$P{MONTO_MENOR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="MONTO_MAYOR">
+						<subreportParameterExpression><![CDATA[$P{MONTO_MAYOR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="DIR">
+						<subreportParameterExpression><![CDATA[$P{DIR5}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{DIR1}]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="servicio">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="23">
+				<subreport>
+					<reportElement x="0" y="0" width="752" height="20"/>
+					<subreportParameter name="DIAS_MENOS">
+						<subreportParameterExpression><![CDATA[$P{DIAS_MENOS}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="DIAS_MENOS2">
+						<subreportParameterExpression><![CDATA[$P{DIAS_MENOS2}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FECHA_INICIO">
+						<subreportParameterExpression><![CDATA[$P{FECHA_INICIO}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FECHA_FINAL">
+						<subreportParameterExpression><![CDATA[$P{FECHA_FINAL}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="COD_USER">
+						<subreportParameterExpression><![CDATA[$P{COD_USER}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="MONTO_MENOR">
+						<subreportParameterExpression><![CDATA[$P{MONTO_MENOR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="MONTO_MAYOR">
+						<subreportParameterExpression><![CDATA[$P{MONTO_MAYOR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="DIR">
+						<subreportParameterExpression><![CDATA[$P{DIR5}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{DIR2}]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="obra">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="21">
+				<subreport>
+					<reportElement x="0" y="0" width="752" height="17"/>
+					<subreportParameter name="DIAS_MENOS">
+						<subreportParameterExpression><![CDATA[$P{DIAS_MENOS}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="DIAS_MENOS2">
+						<subreportParameterExpression><![CDATA[$P{DIAS_MENOS2}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FECHA_INICIO">
+						<subreportParameterExpression><![CDATA[$P{FECHA_INICIO}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FECHA_FINAL">
+						<subreportParameterExpression><![CDATA[$P{FECHA_FINAL}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="COD_USER">
+						<subreportParameterExpression><![CDATA[$P{COD_USER}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="MONTO_MENOR">
+						<subreportParameterExpression><![CDATA[$P{MONTO_MENOR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="MONTO_MAYOR">
+						<subreportParameterExpression><![CDATA[$P{MONTO_MAYOR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="DIR">
+						<subreportParameterExpression><![CDATA[$P{DIR5}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{DIR3}]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="consultoria">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="14">
+				<subreport>
+					<reportElement x="0" y="0" width="752" height="14"/>
+					<subreportParameter name="DIAS_MENOS">
+						<subreportParameterExpression><![CDATA[$P{DIAS_MENOS}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="DIAS_MENOS2">
+						<subreportParameterExpression><![CDATA[$P{DIAS_MENOS2}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FECHA_INICIO">
+						<subreportParameterExpression><![CDATA[$P{FECHA_INICIO}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="FECHA_FINAL">
+						<subreportParameterExpression><![CDATA[$P{FECHA_FINAL}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="COD_USER">
+						<subreportParameterExpression><![CDATA[$P{COD_USER}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="MONTO_MENOR">
+						<subreportParameterExpression><![CDATA[$P{MONTO_MENOR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="MONTO_MAYOR">
+						<subreportParameterExpression><![CDATA[$P{MONTO_MAYOR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="DIR">
+						<subreportParameterExpression><![CDATA[$P{DIR5}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{DIR4}]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="17" y="0" width="158" height="8"/>
+				<textElement textAlignment="Center">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD MAYOR DE SAN ANDRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="8" width="158" height="8"/>
+				<textElement textAlignment="Center">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCION ADMINISTRATIVA FINANCIERA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="16" width="158" height="8"/>
+				<textElement textAlignment="Center">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIVISIÓN DE ADQUISICIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="291" y="0" width="155" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ordenes de compra realizadas por :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="291" y="16" width="155" height="8"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{USUARIO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="287" y="0" width="159" height="18"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE ORDENES DE COMPRA]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="610" y="0" width="61" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$P{FECHA_FINAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="527" y="0" width="14" height="10"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DE: ]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="541" y="0" width="61" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$P{FECHA_INICIO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="602" y="0" width="7" height="10"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="513" y="0" width="189" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["El monto total de todas las ordenes generadas es:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="702" y="0" width="50" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="35">
+			<textField evaluationTime="Report">
+				<reportElement x="691" y="10" width="25" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="658" y="10" width="33" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

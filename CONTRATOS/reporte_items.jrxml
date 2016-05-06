@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.4483218986834392"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cod_transaccion" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select t1.cod_trans_detalle,t3.cod_complemento,t1.cantidad_pedido,t2.detalle as unidad_medida,t1.detalle,t3.detalle_solicitud,ROWNUM as num
+from transaccion_detalle t1 inner join unidad_medida t2 on t1.cod_unidad_medida=t2.cod_unidad_medida
+left join transaccion_det_complemento t3 on t1.cod_trans_detalle=t3.cod_trans_detalle
+where t1.cod_transaccion=$P{cod_transaccion}]]>
+	</queryString>
+	<field name="COD_TRANS_DETALLE" class="java.math.BigDecimal"/>
+	<field name="COD_COMPLEMENTO" class="java.math.BigDecimal"/>
+	<field name="CANTIDAD_PEDIDO" class="java.math.BigDecimal"/>
+	<field name="UNIDAD_MEDIDA" class="java.lang.String"/>
+	<field name="DETALLE" class="java.lang.String"/>
+	<field name="DETALLE_SOLICITUD" class="java.lang.String"/>
+	<field name="NUM" class="java.math.BigDecimal"/>
+	<group name="cod_trans_detalle">
+		<groupExpression><![CDATA[$F{COD_TRANS_DETALLE}]]></groupExpression>
+		<groupHeader>
+			<band height="43">
+				<textField>
+					<reportElement x="202" y="0" width="106" height="43"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{UNIDAD_MEDIDA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="308" y="0" width="164" height="43"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{DETALLE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="117" y="0" width="24" height="43"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{NUM}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="141" y="0" width="61" height="43"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{CANTIDAD_PEDIDO}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="5" splitType="Stretch"/>
+	</title>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="308" y="0" width="164" height="23"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DETALLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="0" width="106" height="23"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[UNIDAD MEDIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="61" height="23"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="117" y="0" width="24" height="23"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nº]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="308" y="0" width="164" height="25"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{DETALLE_SOLICITUD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="117" y="0" width="24" height="25"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="61" height="25"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="0" width="106" height="25"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

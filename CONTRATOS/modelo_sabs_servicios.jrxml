@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="modelo_sabs_bienes3" language="groovy" pageWidth="612" pageHeight="1008" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="3"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="sw_garan_reten_func" class="java.lang.String"/>
+	<parameter name="DIR1" class="java.lang.String"/>
+	<parameter name="cod_transaccion" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Henrry\\Desktop\\CONTRATOS\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select t3.proponente_adjudicado,t3.dir_proponente_adjudicado
+,t2.detalle,t2.cod_almacen,t2.cod_cuantia,t2.cod_w,t3.razon_social_contratante,t3.nit_contratante
+,t3.direccion_contratante,t3.ciudad_contratante,t3.rep_leg_contratante,t3.cargo_rep_leg_contratante
+,t3.ci_rep_leg_contratante,t3.desc_tipo_contrato,t3.ci_proponente_adjudicado,t3.deno_proponente_adjudicado
+,t3.asesor_juridico,t3.objeto_contratacion,t3.modalidad_contratacion,t3.denominacion_contratacion
+,t3.empresa_proponente_adjudicado,t3.ciudad_proponente,t3.nro_tpodergadm
+,t3.fecha_nro_tpodergadm,t3.nro_notfepub,t3.doc_notfepub
+,t3.convocatoria_adc_anpe,t3.fecha_conv_anpe,t3.destino_contratacion
+,t3.cuce_contratacion,t3.nro_inf_div_adq,t3.nro_res_adm
+,t3.fecha_res_adm,t3.tipo_garantia,t3.nro_garantia
+,t3.emisor_garantia,t3.vigencia_garantia,t3.monto_garantia
+,t3.porcentaje_garantia,t3.nro_pagos_anticipo,t3.plazo_cobro_anticipo
+,t3.monto_garantia_func,t3.vigencia_garantia_func,t3.dias_entrega
+,t3.lugar_entrega,t3.monto_cancelado,t3.cargo
+,t3.tipo_pago,t3.multa_porcentaje,t3.fecha_registro_contrato
+,t3.nota_sol_adq,t3.nro_cert_ppta,t3.fecha_cert_ppta
+,t3.fecha_nota_sol_adq,t3.nro_hoja_ruta,t3.fecha_hoja_ruta
+,t3.nro_boleta_garantia,t3.emit_boleta_garantia,t3.nro_inf_com_calf
+,t3.fecha_inf_com_calf,t3.nro_res_adj,t3.fecha_res_adj
+,t3.nro_tpga,t3.dr_tpga,t3.nro_contrato
+,t3.sw_garantia_retencion,t3.sw_anticipo,t3.sw_garan_reten_func
+from transaccion t2 inner join contratos t3 on t2.cod_transaccion=t3.cod_transaccion
+where t2.cod_transaccion=$P{cod_transaccion}]]>
+	</queryString>
+	<field name="PROPONENTE_ADJUDICADO" class="java.lang.String"/>
+	<field name="DIR_PROPONENTE_ADJUDICADO" class="java.lang.String"/>
+	<field name="DETALLE" class="java.lang.String"/>
+	<field name="COD_ALMACEN" class="java.math.BigDecimal"/>
+	<field name="COD_CUANTIA" class="java.math.BigDecimal"/>
+	<field name="COD_W" class="java.math.BigDecimal"/>
+	<field name="RAZON_SOCIAL_CONTRATANTE" class="java.lang.String"/>
+	<field name="NIT_CONTRATANTE" class="java.lang.String"/>
+	<field name="DIRECCION_CONTRATANTE" class="java.lang.String"/>
+	<field name="CIUDAD_CONTRATANTE" class="java.lang.String"/>
+	<field name="REP_LEG_CONTRATANTE" class="java.lang.String"/>
+	<field name="CARGO_REP_LEG_CONTRATANTE" class="java.lang.String"/>
+	<field name="CI_REP_LEG_CONTRATANTE" class="java.lang.String"/>
+	<field name="DESC_TIPO_CONTRATO" class="java.lang.String"/>
+	<field name="CI_PROPONENTE_ADJUDICADO" class="java.lang.String"/>
+	<field name="DENO_PROPONENTE_ADJUDICADO" class="java.lang.String"/>
+	<field name="ASESOR_JURIDICO" class="java.lang.String"/>
+	<field name="OBJETO_CONTRATACION" class="java.lang.String"/>
+	<field name="MODALIDAD_CONTRATACION" class="java.lang.String"/>
+	<field name="DENOMINACION_CONTRATACION" class="java.lang.String"/>
+	<field name="EMPRESA_PROPONENTE_ADJUDICADO" class="java.lang.String"/>
+	<field name="CIUDAD_PROPONENTE" class="java.lang.String"/>
+	<field name="NRO_TPODERGADM" class="java.lang.String"/>
+	<field name="FECHA_NRO_TPODERGADM" class="java.sql.Timestamp"/>
+	<field name="NRO_NOTFEPUB" class="java.lang.String"/>
+	<field name="DOC_NOTFEPUB" class="java.lang.String"/>
+	<field name="CONVOCATORIA_ADC_ANPE" class="java.lang.String"/>
+	<field name="FECHA_CONV_ANPE" class="java.sql.Timestamp"/>
+	<field name="DESTINO_CONTRATACION" class="java.lang.String"/>
+	<field name="CUCE_CONTRATACION" class="java.lang.String"/>
+	<field name="NRO_INF_DIV_ADQ" class="java.lang.String"/>
+	<field name="NRO_RES_ADM" class="java.lang.String"/>
+	<field name="FECHA_RES_ADM" class="java.sql.Timestamp"/>
+	<field name="TIPO_GARANTIA" class="java.lang.String"/>
+	<field name="NRO_GARANTIA" class="java.lang.String"/>
+	<field name="EMISOR_GARANTIA" class="java.lang.String"/>
+	<field name="VIGENCIA_GARANTIA" class="java.sql.Timestamp"/>
+	<field name="MONTO_GARANTIA" class="java.lang.String"/>
+	<field name="PORCENTAJE_GARANTIA" class="java.lang.String"/>
+	<field name="NRO_PAGOS_ANTICIPO" class="java.lang.String"/>
+	<field name="PLAZO_COBRO_ANTICIPO" class="java.lang.String"/>
+	<field name="MONTO_GARANTIA_FUNC" class="java.lang.String"/>
+	<field name="VIGENCIA_GARANTIA_FUNC" class="java.sql.Timestamp"/>
+	<field name="DIAS_ENTREGA" class="java.lang.String"/>
+	<field name="LUGAR_ENTREGA" class="java.lang.String"/>
+	<field name="MONTO_CANCELADO" class="java.lang.String"/>
+	<field name="CARGO" class="java.lang.String"/>
+	<field name="TIPO_PAGO" class="java.lang.String"/>
+	<field name="MULTA_PORCENTAJE" class="java.lang.String"/>
+	<field name="FECHA_REGISTRO_CONTRATO" class="java.sql.Timestamp"/>
+	<field name="NOTA_SOL_ADQ" class="java.lang.String"/>
+	<field name="NRO_CERT_PPTA" class="java.lang.String"/>
+	<field name="FECHA_CERT_PPTA" class="java.sql.Timestamp"/>
+	<field name="FECHA_NOTA_SOL_ADQ" class="java.sql.Timestamp"/>
+	<field name="NRO_HOJA_RUTA" class="java.lang.String"/>
+	<field name="FECHA_HOJA_RUTA" class="java.lang.String"/>
+	<field name="NRO_BOLETA_GARANTIA" class="java.lang.String"/>
+	<field name="EMIT_BOLETA_GARANTIA" class="java.lang.String"/>
+	<field name="NRO_INF_COM_CALF" class="java.lang.String"/>
+	<field name="FECHA_INF_COM_CALF" class="java.sql.Timestamp"/>
+	<field name="NRO_RES_ADJ" class="java.lang.String"/>
+	<field name="FECHA_RES_ADJ" class="java.sql.Timestamp"/>
+	<field name="NRO_TPGA" class="java.lang.String"/>
+	<field name="DR_TPGA" class="java.lang.String"/>
+	<field name="NRO_CONTRATO" class="java.lang.String"/>
+	<field name="SW_GARANTIA_RETENCION" class="java.lang.String"/>
+	<field name="SW_ANTICIPO" class="java.lang.String"/>
+	<field name="SW_GARAN_RETEN_FUNC" class="java.lang.String"/>
+	<group name="grupo1">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="531">
+				<textField>
+					<reportElement x="0" y="29" width="572" height="31"/>
+					<textElement markup="none">
+						<font fontName="Verdana" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["CONTRATO ADMINISTRATIVO PARA LA PRESTACIÓN DE "+$F{OBJETO_CONTRATACION}+" - "+$F{CUCE_CONTRATACION}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="10" width="272" height="19"/>
+					<textElement markup="none">
+						<font fontName="Verdana" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["A-JUR-CONT.SERV. Nº "+$F{NRO_CONTRATO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="60" width="572" height="278"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana" size="10"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Conste por el presente Contrato Administrativo de "+$F{DESC_TIPO_CONTRATO}+", que celebran por una parte la <b>"+$F{RAZON_SOCIAL_CONTRATANTE}+"</b>, con NIT Nº "+$F{NIT_CONTRATANTE}+", con domicilio en "+$F{DIRECCION_CONTRATANTE}+", en la ciudad de "+$F{CIUDAD_CONTRATANTE}+", representada legalmente por el/la <b>"+$F{REP_LEG_CONTRATANTE}+"</b>, "+$F{CARGO_REP_LEG_CONTRATANTE}+", con cédula de identidad Nº "+$F{CI_REP_LEG_CONTRATANTE}+", que en adelante se denominará la <b>ENTIDAD</b>; y, por otra parte, la Empresa <b>"+$F{EMPRESA_PROPONENTE_ADJUDICADO}+"</b>, con domicilio en "+$F{DIR_PROPONENTE_ADJUDICADO}+", de la ciudad de "+$F{CIUDAD_PROPONENTE}+", representada legalmente por "+$F{PROPONENTE_ADJUDICADO}+", con cédula de identidad No. <b>"+$F{CI_PROPONENTE_ADJUDICADO}+"</b>, según Testimonio de Poder General de Administración Nº"+$F{NRO_TPODERGADM}+" de fecha "+$F{FECHA_NRO_TPODERGADM}+" otorgado ante la Notaria de Fe Pública Nº"+$F{NRO_NOTFEPUB}+" a cargo del "+$F{DOC_NOTFEPUB}+", que en adelante se denominará el <b>"+$F{DENO_PROPONENTE_ADJUDICADO}+"</b>, quienes celebran y suscriben el presente Contrato Administrativo, de  acuerdo a los siguientes términos y condiciones:<br><br><b>CLÁUSULA PRIMERA.- (ANTECEDENTES)</b><br>La <b>ENTIDAD</b>, mediante Convocatoria ADC ANPE "+$F{CONVOCATORIA_ADC_ANPE}+", en proceso realizado bajo las normas y regulaciones de contratación establecidas en el Decreto Supremo N° 0181,  de 28 de junio de 2009, de las Normas Básicas del Sistema de Administración de Bienes y Servicios NB-SABS y el Documento Base de Contratación (DBC) para la Prestación de Servicios, en la Modalidad de Apoyo Nacional a la Producción y Empleo (ANPE), convocó en fecha "+$F{FECHA_CONV_ANPE}+" a personas naturales con capacidad de celebrar actos jurídicos, a presentar propuestas para la adquisición de <b>"+$F{OBJETO_CONTRATACION}+"</b>, destinado a "+$F{DESTINO_CONTRATACION}+" de la <b>UNIVERSIDAD MAYOR DE SAN ANDRÉS</b> con CUCE "+$F{CUCE_CONTRATACION}+", en base a lo solicitado en el Documento Base de Contratación (DBC).<br>Concluida la etapa de evaluación de propuestas, el Responsable del Proceso de Contratación de Apoyo Nacional a la Producción y Empleo (RPA), en base al Informe de Evaluación y Recomendación de Adjudicación INF. DIV. ADQ. Nº"+$F{NRO_INF_DIV_ADQ}+" , resolvió adjudicar la Adquisición de Bienes mediante Resolución Administrativa Nº "+$F{NRO_RES_ADM}+" de fecha "+$F{FECHA_RES_ADM}+" a la Empresa "+$F{EMPRESA_PROPONENTE_ADJUDICADO}+", representada legalmente por el Sr. "+$F{PROPONENTE_ADJUDICADO}+"., al cumplir su propuesta con todos los requisitos establecidos en el DBC.<br><br><b>CLÁUSULA SEGUNDA.- (LEGISLACIÓN APLICABLE)</b><br>El presente Contrato se celebra exclusivamente al amparo de las siguientes disposiciones:"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="41" y="421" width="530" height="19"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>e)</b> Otras disposiciones relacionadas.]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="440" width="572" height="91"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>CLÁUSULA TERCERA.- (OBJETO Y CAUSA)</b><br>El objeto y causa del presente contrato es la prestación del <b>SERVICIO</b> de "+$F{OBJETO_CONTRATACION}+" destinado a "+$F{DESTINO_CONTRATACION}+" de la <b>UNIVERSIDAD MAYOR DE SAN ANDRES</b> que en adelante se denominara <b>"+$F{DENOMINACION_CONTRATACION}+"</b> provistos por el <b>"+$F{DENO_PROPONENTE_ADJUDICADO}+"</b> de conformidad con el Documento Base de Contratación DBC y Propuesta Adjudicada, con estricta y absoluta sujeción al presente Contrato, de acuerdo a las siguientes especificaciones técnicas:."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="41" y="358" width="531" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>b)</b> Ley Nº 1178, de 20 de julio de 1990, de Administración y Control Gubernamentales.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="41" y="404" width="531" height="17"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>d)</b> Ley del Presupuesto General del Estado aprobado para la gestión y su reglamentación.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="41" y="338" width="531" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>a)</b> Constitución Política del Estado]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="41" y="378" width="531" height="26"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>c)</b> Decreto Supremo Nº 0181, de 28 de junio de 2009, de las Normas Básicas del Sistema de Administración de Bienes y Servicios – NB-SABS y sus modificaciones.]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="repo_item">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="56">
+				<subreport>
+					<reportElement x="1" y="0" width="571" height="56"/>
+					<subreportParameter name="cod_transaccion">
+						<subreportParameterExpression><![CDATA[$P{cod_transaccion}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "reporte_items.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="grupo2">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="660">
+				<staticText>
+					<reportElement x="0" y="50" width="572" height="20"/>
+					<textElement>
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA CUARTA.- (DOCUMENTOS INTEGRANTES DEL CONTRATO)]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="35" y="236" width="537" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>-</b> Documentos adheridos a la Hoja de Ruta No "+$F{NRO_HOJA_RUTA}+" de "+$F{FECHA_HOJA_RUTA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="33" y="415" width="539" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>a)</b> Realizar la prestación del <b>SERVICIO</b> objeto del presente contrato, de acuerdo con lo establecido los términos de referencia elaborados por la Unidad Solicitante, así como las condiciones de su propuesta."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="-1" y="342" width="572" height="20"/>
+					<textElement>
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA QUINTA.- (OBLIGACIONES DE LAS PARTES)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="35" y="216" width="537" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>-</b> Certificado del RUPE.]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="35" y="176" width="537" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>-</b> Resolución Administrativa No "+$F{NRO_RES_ADJ}+" de Adjudicación de fecha "+$F{FECHA_RES_ADJ}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="70" width="571" height="26"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Forman parte del presente contrato, los siguientes documentos:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="36" y="96" width="537" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>-</b> Nota "+$F{NOTA_SOL_ADQ}+" de fecha "+$F{FECHA_NOTA_SOL_ADQ}+", solicitando la adquisición."]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="-1" y="362" width="572" height="50"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Las partes contratantes se comprometen y obligan a dar cumplimiento a todas y cada una de las cláusulas del presente contrato.<br><br>Por su parte, el <b>"+$F{DENO_PROPONENTE_ADJUDICADO}+"</b> se compromete a cumplir con las siguientes obligaciones:"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="35" y="196" width="537" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>-</b> Propuesta Adjudicada.]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="34" y="156" width="537" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>-</b> Informe de la Comisión Calificadora INF.DIV.ADQ. Nº "+$F{NRO_INF_COM_CALF}+" de fecha "+$F{FECHA_INF_COM_CALF}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="35" y="136" width="537" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>-</b> Documento Base de Contratación.]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="34" y="116" width="537" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>-</b> Certificación Presupuestaria No "+$F{NRO_CERT_PPTA}+", Form. 002 de fecha "+$F{FECHA_CERT_PPTA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="32" y="446" width="539" height="15"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>b)</b> Cumplir cada una de las cláusulas del presente contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="32" y="545" width="539" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>b)</b> Dar conformidad al servicio, en un plazo no mayor de 5 días hábiles computables a partir de la recepción de informe.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="32" y="607" width="539" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>d)</b> Cumplir cada una de las cláusulas del presente contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="477" width="571" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Por su parte, la <b>ENTIDAD</b> se compromete a cumplir las siguientes obligaciones:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="32" y="576" width="539" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>c)</b> Realizar el pago del Servicio en un plazo no mayor de 10 días hábiles computables a partir de la emisión de la conformidad a favor del Proveedor.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="32" y="508" width="539" height="31"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>a)</b> Apoyar el Servicio proporcionando la información necesaria, apoyo logístico referente a condiciones de trabajo e insumos.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="0" width="571" height="49"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Que en adelante se denominarán el <b>SERVICIO</b>, que serán provistos por el <b>PROVEEDOR</b> de conformidad con el Documento Base de Contratación DBC, Propuesta Adjudicada, con estricta y absoluta sujeción a este contrato.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="33" y="461" width="539" height="15"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[<b>c)</b> Cumplir con cada una de las tareas encomendadas por la Unidad Solicitante.]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="grupo3">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="899">
+				<textField>
+					<reportElement x="0" y="14" width="572" height="859"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>CLÁUSULA SEXTA.- (VIGENCIA)</b><br>El contrato, entrará en vigencia desde el día siguiente hábil de su suscripción, por ambas partes, hasta que las mismas hayan dado cumplimiento a todas las cláusulas contenidas en el presente contrato."
++
+" <br><br><b>CLÁUSULA SEPTIMA.- (RETENCIONES POR PAGOS PARCIALES)</b><br>El <b>PROVEEDOR</b> acepta expresamente, que la <b>ENTIDAD</b> retendrá el "+$F{PORCENTAJE_GARANTIA}+"% de cada pago parcial, en sustitución de la Garantía de Cumplimiento de Contrato. Estas retenciones serán reintegradas al <b>PROVEEDOR</b> una vez realizada la recepción definitiva de los <b>BIENES</b>."
++
+($F{SW_GARAN_RETEN_FUNC}.equals("1") ? "<br><br><b>CLÁUSULA NOVENA.- (GARANTIA DE FUNCIONAMIENTO DE MAQUINARIA Y/O EQUIPO)</b><br>Una vez realizada la Recepción Definitiva de los <b>BIENES</b>, el <b>PROVEEDOR</b>, se obliga a constituir la Garantía de Funcionamiento de Maquinaria  y/o Equipo, a la orden de la <b>UNIVERSIDAD MAYOR DE SAN ANDRES</b>, por el "+$F{MONTO_GARANTIA_FUNC}+" que avalará el correcto funcionamiento y/o mantenimiento de los <b>BIENES</b> objeto del presente contrato, con una vigencia de "+$F{VIGENCIA_GARANTIA_FUNC}+"  computable a partir de la Recepción Definitiva de los bienes.<br>El importe de esta garantía podrá ser cobrado por la <b>ENTIDAD</b> en caso de que los <b>BIENES</b> adquiridos por la entidad no presenten buen funcionamiento y/o el <b>PROVEEDOR</b> no hubiese efectuado el mantenimiento preventivo dentro del plazo de vigencia de la garantía.<br>Si dentro del plazo previsto por la <b>ENTIDAD</b> los <b>BIENES</b> objeto del presente contrato, no presenta fallas en su funcionamiento y tuvieran el mantenimiento adecuado, dicha garantía será devuelta." :
+($F{SW_GARAN_RETEN_FUNC}.equals("2") ? "<br><br><b>CLÁUSULA NOVENA.- (RETENCIONES POR CONCEPTO DE GARANTIA DE FUNCIONAMIENTO DE MAQUINARIA Y/O EQUIPO)</b><br>El <b>PROVEEDOR</b> acepta expresamente, que la <b>ENTIDAD</b> retendrá el "+$F{MONTO_GARANTIA_FUNC}+", en calidad de Garantía de Funcionamiento de  Maquinaria y/o Equipo que avalará el correcto funcionamiento y/o mantenimiento de los <b>BIENES</b> objeto del presente contrato.<br>El importe de esta garantía podrá ser cobrado por la <b>ENTIDAD</b> en caso de que los <b>BIENES</b> adquiridos por la entidad no presenten buen funcionamiento y/o el <b>PROVEEDOR</b> no hubiese efectuado el mantenimiento preventivo dentro del plazo de vigencia de la garantía.Si dentro del plazo previsto por la <b>ENTIDAD</b> los <b>BIENES</b> objeto del presente contrato, no presenta fallas en su funcionamiento y tuvieran el mantenimiento adecuado, dicha retención será devuelta."
+    : ""
+))
++
+"CLÁUSULA NOVENA.- (LUGAR DE PRESTACIÓN DE SERVICIOS) El PROVEEDOR prestará el SERVICIO, objeto del presente contrato en instalaciones de ………………… bajo control del Responsable de Supervisión o la Comisión designada para el efecto."
++
+"CLÁUSULA DÉCIMA.- (DEL MONTO, MONEDA Y FORMA DE PAGO)El monto total aceptado por las partes para la prestación del SERVICIO es de Bs. __________ (Registrar en numeral y literal el monto del contrato, en bolivianos) que será pagado ________ (señalar los pagos periódicos sucesivos) previa presentación de informes periódicos cada fin de mes y aprobados por …………………….. de acuerdo a los objetivos planteados, con cargo a ……………………..CLÁUSULA DÉCIMA PRIMERA.- (ESTIPULACIÓN SOBRE IMPUESTOS) Correrá por cuenta del PROVEEDOR, en el marco de la relación contractual, el pago de todos los impuestos vigentes en el país a la fecha de suscripción del presente contrato."]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="grupo4">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="899">
+				<textField>
+					<reportElement x="0" y="23" width="570" height="452"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["<b>CLÁUSULA DÉCIMA CUARTA.- (FACTURACIÓN)</b><br>Para que se efectúe el pago, el <b>PROVEEDOR</b> deberá emitir la factura oficial por el monto del pago en favor de la <b>ENTIDAD</b>, caso contrario la <b>ENTIDAD</b> deberá retener los montos de las obligaciones tributarias pendientes, para su posterior pago al Servicio de Impuestos Nacionales.<br><br><b>CLÁUSULA DÉCIMA QUINTA.- (MODIFICACIONES AL CONTRATO)</b><br>El Contrato podrá ser modificado por uno varios  Contratos Modificatorios, mismos que pueden afectar el alcance, monto y/o plazo. El monto de cada contrato modificatorio, no deberá exceder el 10%  del monto del presente contrato. Asimismo la suma de los montos de los contratos modificatorios no deberá exceder el 10% del monto del presente contrato, de acuerdo con lo establecido en el artículo 89 del Decreto Supremo No 0181.<br>Las causas modificatorias deberán ser sustentadas por informes técnicos y legales que establezcan la viabilidad técnica y de financiamiento.<br><br><b>CLÁUSULA DÉCIMA SEXTA.- (CESIÓN)</b><br>El <b>PROVEEDOR</b> no podrá transferir parcial, ni totalmente las obligaciones contraídas en el presente Contrato, siendo de su entera responsabilidad la ejecución y cumplimiento de las obligaciones establecidas en el mismo, salvo lo establecido en el parágrafo III del artículo 89 de las NB-SABS.<br><br><b>CLÁUSULA DÉCIMA SEPTIMA.- (MULTAS)</b><br>El <b>PROVEEDOR</b> se obliga a cumplir con el plazo de entrega y cronograma (si corresponde), establecido en la Clausula <b>(Debe cambiar)</b> del presente Contrato, caso contrario será multado con el "+$F{MULTA_PORCENTAJE}+" por día de retraso. La suma de las multas no podrá exceder en ningún caso el veinte por ciento (20%) del monto total del contrato, sin perjuicio de resolver el mismo.<br>Cuando la contratación se efectúe por ítems o lotes, las multas serán calculadas respecto del monto correspondiente al ítem o lote que hubiese sufrido retraso en su entrega.<br><br><b>CLÁUSULA DÉCIMA OCTAVA.- (EXONERACIÓN DE LAS CARGAS LABORALES Y SOCIALES A LA ENTIDAD)</b><br>El <b>PROVEEDOR</b> corre con las obligaciones que emerjan del objeto del presente Contrato, respecto a las cargas laborales y sociales con el personal de su dependencia, se exonera de estas obligaciones a la <b>ENTIDAD</b>.<br><br><b>CLÁUSULA DÉCIMA NOVENA.- (EXONERACIÓN A LA ENTIDAD DE RESPONSABILIDADES POR DAÑO A TERCEROS)</b><br>El <b>PROVEEDOR</b> se obliga a tomar todas las previsiones que pudiesen surgir por daño a terceros en la provisión de los <b>BIENES</b>, se exonera de estas obligaciones a la <b>ENTIDAD</b>."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="48" y="718" width="501" height="39"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[d) Por incumplimiento injustificado del plazo de entrega o el cronograma de entregas (si corresponde) de provisión sin que el <b>PROVEEDOR</b> adopte medidas necesarias y oportunas para recuperar su demora y asegurar la conclusión de la entrega dentro del plazo vigente.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="48" y="814" width="501" height="27"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[a) Por instrucciones injustificadas emanadas de la ENTIDAD para la suspensión de la provisión de los BIENES por más de treinta (30) días calendario.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="48" y="667" width="501" height="14"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[a) Por disolución del <b>PROVEEDOR (sea Empresa o Asociación Accidental).</b>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="39" y="794" width="523" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[2.2 Resolución a requerimiento del PROVEEDOR por causales atribuibles a la ENTIDAD:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="48" y="701" width="501" height="17"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[c) Por suspensión de la provisión de los <b>BIENES</b> sin justificación.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="48" y="841" width="497" height="39"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[b) Si apartándose de los términos del contrato, la ENTIDAD pretende efectuar aumento o disminución en las cantidades de la adquisición, sin la emisión del necesario Contrato Modificatorio.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="488" width="569" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Se dará por terminado el vínculo contractual por una de las siguientes modalidades:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="39" y="648" width="529" height="19"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[2.1 Resolución a requerimiento de la ENTIDAD, por causales atribuibles al PROVEEDOR:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="48" y="757" width="501" height="37"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[e) Cuando el monto de la multa por atraso en la entrega definitiva, alcance el diez por ciento (10%) del monto total del contrato, decisión optativa, o el veinte por ciento (20%), de forma obligatoria.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="48" y="681" width="500" height="20"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[b) Por quiebra declarada del <b>PROVEEDOR.</b>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="32" y="578" width="543" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[2. Por Resolución del contrato: ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="31" y="508" width="204" height="20"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[1. Por Cumplimiento de Contrato: ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="475" width="569" height="13"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Verdana" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLÁUSULA DÉCIMA NOVENA.- (TERMINACIÓN DEL CONTRATO)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="31" y="598" width="537" height="50"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[Si se diera el caso y como una forma excepcional de terminar el Contrato, a los efectos legales correspondientes, la <b>ENTIDAD</b> y el <b>PROVEEDOR</b>, acuerdan las siguientes causales para procesar la resolución del Contrato:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="31" y="528" width="537" height="50"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="Verdana"/>
+					</textElement>
+					<text><![CDATA[De forma normal, tanto la <b>ENTIDAD</b> como el <b>PROVEEDOR</b> darán por terminado el presente Contrato, una vez que ambas partes hayan dado cumplimiento a todas las condiciones y estipulaciones contenidas en el mismo, lo cual se hará constar en el Certificado de Cumplimiento de Contrato.]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="9" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="135" y="0" width="259" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD MAYOR DE SAN ANDRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="20" width="259" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTAMENTO DE ASESORIA JURIDICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="40" width="259" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La Paz - Bolivia]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="908" splitType="Stretch">
+			<textField>
+				<reportElement x="310" y="733" width="219" height="14"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CI_PROPONENTE_ADJUDICADO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="747" width="220" height="14"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[R.P.A. - U.M.S.A.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="37" y="713" width="218" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="none">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{REP_LEG_CONTRATANTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="497" width="572" height="192"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["<b>CLÁUSULA VIGÉSIMA.- (SOLUCIÓN DE CONTROVERSIAS)</b><br>En caso surgir dudas sobre los derechos y obligaciones de las partes durante la ejecución del presente contrato, las partes acudirán a los términos y condiciones del contrato, Documento Base de Contratación, propuesta adjudicada, sometidas a la Jurisdicción Coactiva Fiscal.<br><br><b>CLÁUSULA VIGÉSIMA PRIMERA.-  (CONFORMIDAD)</b><br>En señal de conformidad y para su fiel y estricto cumplimiento, suscribimos el presente Contrato en cuatro ejemplares de un mismo tenor y validez, la "+$F{REP_LEG_CONTRATANTE}+", "+$F{CARGO_REP_LEG_CONTRATANTE}+" , en representación legal de la ENTIDAD y el Sr(a). "+$F{PROPONENTE_ADJUDICADO}+" de la Empresa "+$F{EMPRESA_PROPONENTE_ADJUDICADO}+" en representación del <b>PROVEEDOR.</b><br> Este documento, conforme a disposiciones legales de control fiscal vigentes, será registrado ante la Contraloría General del Estado en idioma español.<br><br>La Paz, "+$F{FECHA_REGISTRO_CONTRATO}+"."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-2" y="881" width="82" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[c.c.: Archivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="10" width="498" height="27"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[c) Por incumplimiento injustificado en el pago parcial o total, por más de cuarenta y cinco (45) días calendario computados a partir de la fecha de entrega definitiva de los bienes en la entidad.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="303" width="499" height="194"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Si en cualquier momento antes de la terminación de la provisión de los <b>BIENES</b>, objeto del presente Contrato, la <b>ENTIDAD</b> o el <b>PROVEEDOR</b> se encontrase con situaciones fuera de control, por causas de fuerza mayor o caso fortuito que imposibiliten la conclusión de la provisión de los BIENES o vayan contra los intereses del Estado, la parte afectada, comunicará por escrito su intensión de resolver el Contrato, justificando la causa.<br>La <b>ENTIDAD</b>, mediante carta notariada dirigida al <b>PROVEEDOR</b>, suspenderá la provisión y resolverá el Contrato total o parcialmente. A la entrega de dicho comunicación oficial de resolución, el PROVEEDOR suspenderá la provisión de acuerdo a las instrucciones escritas que al efecto emita la ENTIDAD.<br>Se liquidarán los costos proporcionales que demandase el cierre de la adquisición y algunos otros gastos que a juicio de la ENTIDAD fueran considerados sujetos a reembolso.<br>Con estos datos la ENTIDAD elaborará la liquidación final y el trámite del pago correspondiente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="815" width="197" height="14"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ASESOR JURIDICO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="310" y="713" width="219" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="none">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{PROPONENTE_ADJUDICADO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="733" width="218" height="14"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECTORA ADMINISTRATIVA FINANCIERA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="51" y="57" width="498" height="220"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Para procesar la resolución del Contrato por cualquiera de las causales señaladas, la <b>ENTIDAD</b> o el <b>PROVEEDOR</b> darán aviso escrito mediante carta notariada, a la otra parte, de su intención de resolver el Contrato, estableciendo claramente la causal que se aduce.<br>Si dentro de los cinco (5) días hábiles siguientes de la fecha de notificación, se enmendaran las fallas, se normalizara el desarrollo de la provisión y se tomaran las medidas necesarias para continuar normalmente con las estipulaciones del Contrato. El requirente de la resolución expresará por escrito su conformidad a la solución, el aviso de intensión de resolución será retirado. En caso contrario, si al vencimiento de éste término no existiese ninguna respuesta, el proceso de resolución continuará a cuyo fin la <b>ENTIDAD</b> o el <b>PROVEEDOR</b>, según quién haya requerido la resolución del contrato, notificará mediante carta notariada a la otra parte, que la resolución del Contrato se ha hecho efectivo. Esta carta notariada dará lugar a que: cuando la resolución sea por causales atribuibles al PROVEEDOR, se consolide a favor de la <b>ENTIDAD</b> la Garantía de Cumplimiento de Contrato o efectivización de la retención y de Correcta Inversión de Anticipo (cuando corresponda).<br>La <b>ENTIDAD</b>, procederá a establecer los montos reembolsables al <b>PROVEEDOR</b> por concepto de provisión de los BIENES satisfactoriamente efectuados, si corresponde.<br>Con base a la liquidación final y establecidos los saldos en favor o en contra para su respectivo pago o cobro de la (s) Garantía (s) correspondientes."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="171" y="829" width="198" height="14"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[U.M.S.A.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="310" y="761" width="219" height="14"/>
+				<textElement textAlignment="Center" markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{DENO_PROPONENTE_ADJUDICADO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="39" y="37" width="520" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.3 Reglas aplicables a la Resolución:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="171" y="795" width="198" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="none">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ASESOR_JURIDICO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="39" y="277" width="520" height="26"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.4 Resolución por causas de fuerza mayor o caso fortuito que afecten a la ENTIDAD o al PROVEEDOR.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="310" y="747" width="219" height="14"/>
+				<textElement textAlignment="Center" markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{EMPRESA_PROPONENTE_ADJUDICADO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="65" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteTramites" language="groovy" pageWidth="612" pageHeight="792" columnWidth="556" leftMargin="28" rightMargin="28" topMargin="100" bottomMargin="28">
+	<property name="ireport.zoom" value="1.6528925619834725"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<style name="style1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($P{dias} == 0)]]></conditionExpression>
+			<style forecolor="#F60404"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="imagen" class="java.lang.String"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<parameter name="TxtTotal" class="java.lang.String"/>
+	<parameter name="usuario" class="java.lang.String"/>
+	<parameter name="firma_rpa" class="java.lang.String"/>
+	<parameter name="firma_usr" class="java.lang.String"/>
+	<parameter name="dias" class="java.lang.Integer"/>
+	<parameter name="jefe_adqui" class="java.lang.String"/>
+	<parameter name="rpa" class="java.lang.String"/>
+	<parameter name="DOC" class="java.lang.String"/>
+	<parameter name="DESCRIPCION" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="articulo" class="java.lang.String">
+		<fieldDescription><![CDATA[articulo]]></fieldDescription>
+	</field>
+	<field name="cantidad_pedido" class="java.lang.Integer">
+		<fieldDescription><![CDATA[cantidad_pedido]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="detalle_solicitud" class="java.lang.String">
+		<fieldDescription><![CDATA[detalle_solicitud]]></fieldDescription>
+	</field>
+	<field name="fecha_creacion" class="java.util.Date">
+		<fieldDescription><![CDATA[fecha_creacion]]></fieldDescription>
+	</field>
+	<field name="fecha_envio" class="java.util.Date">
+		<fieldDescription><![CDATA[fecha_envio]]></fieldDescription>
+	</field>
+	<field name="nro_gestion" class="java.lang.String">
+		<fieldDescription><![CDATA[nro_gestion]]></fieldDescription>
+	</field>
+	<field name="tipo_item" class="java.lang.String">
+		<fieldDescription><![CDATA[tipo_item]]></fieldDescription>
+	</field>
+	<field name="unidad_des" class="java.lang.String">
+		<fieldDescription><![CDATA[unidad_des]]></fieldDescription>
+	</field>
+	<field name="unidad_medida" class="java.lang.String">
+		<fieldDescription><![CDATA[unidad_medida]]></fieldDescription>
+	</field>
+	<field name="unidad_sol" class="java.lang.String">
+		<fieldDescription><![CDATA[unidad_sol]]></fieldDescription>
+	</field>
+	<field name="usuario_sol" class="java.lang.String">
+		<fieldDescription><![CDATA[usuario_sol]]></fieldDescription>
+	</field>
+	<field name="casa_comercial" class="java.lang.String">
+		<fieldDescription><![CDATA[casa_comercial]]></fieldDescription>
+	</field>
+	<field name="cbte" class="java.lang.String">
+		<fieldDescription><![CDATA[cbte]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[direccion]]></fieldDescription>
+	</field>
+	<field name="hoja_ruta" class="java.lang.String">
+		<fieldDescription><![CDATA[hoja_ruta]]></fieldDescription>
+	</field>
+	<field name="nit" class="java.lang.String">
+		<fieldDescription><![CDATA[nit]]></fieldDescription>
+	</field>
+	<field name="precio_unit" class="java.lang.Double">
+		<fieldDescription><![CDATA[precio_unit]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono]]></fieldDescription>
+	</field>
+	<field name="subtotal" class="java.lang.Double"/>
+	<field name="nro_transaccion" class="java.lang.String"/>
+	<field name="detalle" class="java.lang.String"/>
+	<field name="cod_trans_detalle" class="java.lang.String"/>
+	<field name="indice" class="java.lang.String"/>
+	<field name="partida" class="java.lang.String"/>
+	<field name="obs" class="java.lang.String"/>
+	<variable name="total" class="java.lang.Double" incrementType="Group" incrementGroup="articulo" calculation="Sum">
+		<variableExpression><![CDATA[$V{sub_total}]]></variableExpression>
+	</variable>
+	<variable name="sub_total" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[$F{cantidad_pedido}*$F{precio_unit}]]></variableExpression>
+	</variable>
+	<group name="total">
+		<groupHeader>
+			<band height="17">
+				<staticText>
+					<reportElement x="11" y="0" width="17" height="17"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[No]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="28" y="0" width="26" height="17"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CANTIDAD]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="54" y="0" width="50" height="17"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[UNIDAD
+MEDIDA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="104" y="0" width="274" height="17"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DESCRIPCIÓN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="427" y="0" width="53" height="17"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[UNITARIO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="480" y="0" width="63" height="17"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTALES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="378" y="0" width="49" height="17"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PARTIDA]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="93">
+				<textField>
+					<reportElement x="10" y="0" width="545" height="43"/>
+					<textElement textAlignment="Justified"/>
+					<textFieldExpression class="java.lang.String"><![CDATA["En tal sentido, solicito a usted presentar a la División de Adquisiciones, Piso 8, Edificio Hoy Nº 2170, en el plazo de los 2 siguientes días hábiles a partir de la recepción del presente documento, para la formalización de la contratación de referencia, la siguiente documentacion:"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="64" y="43" width="436" height="47"/>
+					<textElement verticalAlignment="Middle" markup="html"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{DOC}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="cod_trans_detalle">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="29">
+				<textField>
+					<reportElement x="151" y="-1" width="331" height="14"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{TxtTotal}+" Bs."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="133" y="-1" width="18" height="14"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Son: ]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement mode="Opaque" x="482" y="0" width="61" height="13"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$V{total}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="articulo">
+		<groupExpression><![CDATA[$F{articulo}]]></groupExpression>
+		<groupHeader>
+			<band height="13">
+				<textField>
+					<reportElement x="54" y="0" width="50" height="13"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{unidad_medida}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="427" y="0" width="53" height="13"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{precio_unit}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement x="480" y="0" width="63" height="13"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Number"><![CDATA[$V{sub_total}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="28" y="0" width="26" height="13"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{cantidad_pedido}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="11" y="0" width="17" height="13"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{indice}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="11" y="12" width="532" height="1"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="104" y="0" width="274" height="13"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{articulo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="378" y="0" width="49" height="13"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{partida}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="1">
+				<line>
+					<reportElement x="11" y="0" width="533" height="1"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="12" splitType="Stretch">
+			<staticText>
+				<reportElement x="452" y="0" width="48" height="12"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fec. Impr. :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="501" y="0" width="53" height="12"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="252" splitType="Stretch">
+			<staticText>
+				<reportElement x="159" y="13" width="149" height="14"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARTA DE ADJUDICACION Nº]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="54" y="25" width="55" height="14"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha_creacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="25" width="43" height="14"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La Paz, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="40" width="56" height="13"/>
+				<textElement/>
+				<text><![CDATA[Señor]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="11" y="52" width="385" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{casa_comercial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="67" width="512" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="81" width="245" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="96" width="56" height="14"/>
+				<textElement/>
+				<text><![CDATA[Presente.-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="240" y="116" width="314" height="43"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Ref.:CARTA DE ADJUDICACIÓN: Contratación MENOR"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="176" width="545" height="75"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Como resultado del proceso de contratación y selección de los bienes y/o servicios detallados a continuacion, tengo a bien comunicar a usted que ha sido adjudicado(a), conforme a requerimientos y propuestas recepcionadas en la "+$F{unidad_sol}+", dependientes de la Universidad Mayor de San Andrés “UMSA”: "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="308" y="13" width="56" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{dias}.intValue() == 0 ? "BORRADOR" : $F{nro_gestion})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="160" width="100" height="16"/>
+				<textElement/>
+				<text><![CDATA[De mi consideración:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<line>
+				<reportElement x="11" y="0" width="1" height="12"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="543" y="0" width="1" height="12"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="104" y="0" width="274" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{detalle_solicitud}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="159" splitType="Stretch">
+			<textField>
+				<reportElement x="448" y="147" width="75" height="9"/>
+				<textElement textAlignment="Right">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Pág. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="523" y="148" width="21" height="8"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="72" width="232" height="15"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{rpa}+" - RPA"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="0" width="545" height="20"/>
+				<textElement/>
+				<text><![CDATA[Con este motivo, saludo a usted con mis consideraciones más distinguidas.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="51" y="99" width="100" height="11"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{hoja_ruta}+"/2016"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="99" width="47" height="11"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[hoja de ruta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="110" width="47" height="11"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nro. Sistema]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="51" y="110" width="100" height="11"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nro_transaccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="132" width="100" height="11"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[C.C. Archivo, A. Juridica]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="51" y="121" width="100" height="11"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="121" width="47" height="11"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Elaborado por:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
